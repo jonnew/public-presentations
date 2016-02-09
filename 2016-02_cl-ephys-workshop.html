@@ -10,101 +10,51 @@
       @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
       @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
-      body {
-        font-family: 'Droid Serif';
+      /* Colors */
+      .red    { color: #FF4943; }
+      .gray   { color: #787878; }
+      .green  { color: #87A558; }
+      .blue   { color: #41C8F0; }
+      .yellow { color: #DBEC62; }
+
+      html, body { font-family: 'Droid Serif'; }
+      img.right { max-width: 100%; display: block; margin-left: auto; margin-right: auto; vertical-align: middle; }
+      h1, h2, h3 { font-family: 'Yanone Kaffeesatz'; font-weight: 400; margin-bottom: 0; }
+      blockquote { 
+        background: #f9f9f9; 
+        border-left: 10px solid #ccc; 
+        margin: 1.5em 10px; 
+        padding: 0.5em 10px; 
+        quotes: "\201C""\201D""\2018""\2019"; 
       }
-      img.right {
-        max-width: 100%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-		vertical-align: middle;
-      }
-      h1, h2, h3 {
-        font-family: 'Yanone Kaffeesatz';
-        font-weight: 400;
-        margin-bottom: 0;
-      }
+      blockquote p { display: inline; }
+      li p { line-height: 1.25em; }
+      a, a > code { color: #FF4943; text-decoration: underline; }
+      code { background: #e7e8e2; border-radius: 5px; }
       .remark-slide-content h1 { font-size: 3em; }
       .remark-slide-content h2 { font-size: 2em; }
       .remark-slide-content h3 { font-size: 1.6em; }
-      .footnote {
-        position: absolute;
-        bottom: 3em;
-	    font-size: 0.7em;
-      }
-      li p { line-height: 1.25em; }
-      .red { color: #fa0000; }
+      .footnote { position: absolute; bottom: 3em; font-size: 0.7em; }
+      .small { font-size: 0.8em; }
       .large { font-size: 2em; }
-      a, a > code {
-        color: rgb(249, 38, 114);
-        text-decoration: underline;
-      }
-      code {
-        background: #e7e8e2;
-        border-radius: 5px;
-      }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
       .remark-code-line-highlighted     { background-color: #373832; }
-      blockquote {
-        background: #f9f9f9;
-        border-left: 10px solid #ccc;
-        margin: 1.5em 10px;
-        padding: 0.5em 10px;
-        quotes: "\201C""\201D""\2018""\2019";
-      }
-      blockquote p {
-        display: inline;
-      }
-      .pull-left {
-        float: left;
-        width: 47%;
-		
-      }
-      .pull-right {
-        float: right;
-        width: 47%;
-      }
-	  .image-middle {
-		display: inline-block;
-		height: 100%;
-		vertical-align: middle;
-	  }
-      .pull-right ~ p {
-        clear: both;
-      }
-      #slideshow .slide .content code {
-        font-size: 0.8em;
-      }
-      #slideshow .slide .content pre code {
-        font-size: 0.9em;
-        padding: 15px;
-      }
-      .inverse {
-        background: #272822;
-        color: #777872;
-        text-shadow: 0 0 20px #333;
-      }
-      .inverse h1, .inverse h2 {
-        color: #f3f3f3;
-        line-height: 0.8em;
-      }
+      .pull-left { float: left; width: 47%; }
+      .pull-right { float: right; width: 47%; }
+	  .image-middle { display: inline-block; height: 100%; vertical-align: middle; } 
+      .pull-right ~ p { clear: both;}
+
+
+      #slideshow .slide .content code { font-size: 0.8em; }
+      #slideshow .slide .content pre code { font-size: 0.9em; padding: 15px; }
+
+      .inverse { background: #272822; color: #777872; text-shadow: 0 0 20px #333; }
+      .inverse h1, .inverse h2 { color: #f3f3f3; line-height: 0.8em; }
 
       /* Slide-specific styling */
-      #slide-inverse .footnote {
-        bottom: 12px;
-        left: 20px;
-		font-size: 0.7em;
-      }
-      #slide-how .slides {
-        font-size: 0.9em;
-        position: absolute;
-        top:  151px;
-        right: 140px;
-      }
-      #slide-how .slides h3 {
-        margin-top: 0.2em;
-      }
+      #slide-inverse .footnote { bottom: 12px; left: 20px; font-size: 0.7em; }
+      #slide-how .slides { font-size: 0.9em; position: absolute; top:  151px; right: 140px; }
+      #slide-how .slides h3 { margin-top: 0.2em; }
       #slide-how .slides .first, #slide-how .slides .second {
         padding: 1px 20px;
         height: 90px;
@@ -113,51 +63,30 @@
         -webkit-box-shadow: 0 0 10px #777;
         box-shadow: 0 0 10px #777;
       }
-      #slide-how .slides .first {
-        background: #fff;
-        position: absolute;
-        top: 20%;
-        left: 20%;
-        z-index: 1;
-      }
-      #slide-how .slides .second {
-        position: relative;
-        background: #fff;
-        z-index: 0;
-      }
+      #slide-how .slides .first { background: #fff; position: absolute; top: 20%; left: 20%; z-index: 1; }
+      #slide-how .slides .second { position: relative; background: #fff; z-index: 0; }
 
       /* Two-column layout */
-      .left-column {
-        color: #777;
-        width: 20%;
-        height: 92%;
-        float: left;
-      }
-        .left-column h2:last-of-type, .left-column h3:last-child {
-          color: #000;
-        }
-      .right-column {
-        width: 75%;
-        float: right;
-        padding-top: 1em;
-      }
+      .left-column { color: #777; width: 20%; height: 92%; float: left; }
+      .left-column h2:last-of-type, .left-column h3:last-child { color: #000; }
+      .right-column { width: 75%; float: right; padding-top: 1em; }
     </style>
   </head>
   <body>
-<textarea id="source">
+    <textarea id="source">
 
 name: inverse
 layout: true
 class: center, middle, inverse
 ---
-##Feedback Control in Electrophysiology for<br>
-##Great Good
+##.grey[Feedback Control in Electrophysiology for<br>]
+##.red[Great Good]
 
 Jon Newman
+MWL@MIT
+2016 Feb
 
 [homepage](http://www.mit.edu/~jpnewman/) | [github](https://github.com/jonnew)
-
-2016 Feb
 
 ---
 layout: false
@@ -220,14 +149,12 @@ layout: false
 
 <img class="right" src="./figures/system-set.png"/>
 
-Feedback controllers are closed-loop systems, but not necessarily vice versa
+__Feedback control systems are closed-loop systems, but not necessarily vice versa__
+  - Error signal(s)
+  - Continuous update of actuation 
+  - Control over a system state to match reference
 
-Feedback control
-- __Error signal(s)__
-- __Continuous update__ of actuation 
-- __Control__ a system state to match reference
-
-Why does this matter?
+.red[__Why does this matter__?]
    
 ]
 
@@ -239,19 +166,21 @@ layout: false
 ]
 .right-column[
 
-Ubiquitous in all domains of engineering
-
-Concept is ancient, literally
+__Feedback control is one of the most important innovations in human history__
+- Ubiquitous in all domains of engineering
+- Concept is ancient, literally
 
 .pull-left[
 <img class="right" src="./figures/wtrclock.gif" width="70%"/>
-- __Water clocks of Alexandria__
+
+__Water clocks of Alexandria__
 - Circa 250 BC, Ktesbios<sup>.red[1]</sup>
 ]
 
 .pull-right[
 <img class="right" src="./figures/Centrifugal_governor.png" />
-- __Centrifugal governor__
+
+__Centrifugal governor__
 - 1788, James Watt<sup>.red[2]</sup>
 ]
 
@@ -271,24 +200,45 @@ layout: false
 
 .pull-left[
 <img class="right" src="./figures/Block_Diagram_for_Feedback.svg.png" width="70%"/>
-- __Negative feedback amplifier__<sup>.red[1]</sup>
+
+ __Negative feedback amplifier__<sup>.red[1]</sup>
 - 1927, Harold Steven Black
 - Allows communication systems to be instantiated using electrical/optical circuit elements 
 ]
 
 .pull-right[
 <img class="right" src="./figures/googlecar.jpg" />
-- __Autonomous vehicles__
+
+__Autonomous vehicles__
 - Tons of sensors and actuators
 - Very sophisticated control algorithms
 ]
 
-Thermal control, power supply regulation, cruise control, autonomous vehicle operation, signal amplification, motor speed regulation, chemical reactor control, flow control, pressure regulation, optical power regulation, ...
+.red[__Feedback control is used everywhere__]
+.small[
+Thermal control, voltage and current supply regulation, automobile cruise control,
+anti-lock brakes, electrical amplifiers, autonomous robots, quadcopters,
+satellite positioning control, motor speed regulation, chemical reactor flow
+control, pressure regulation, optical power regulation, pH control, fly by
+wire, servo motors, Etc, Etc, ...
+]
 
 .footnote[
   .red[1] https://en.wikipedia.org/wiki/Negative_feedback_amplifier<br>
 ]
 ]
+
+
+---
+layout: false
+.left-column[
+  ## Feedback control in biological systems
+]
+.right-column[
+
+TODO
+]
+
 ---
 layout: false
 .left-column[
@@ -297,13 +247,14 @@ layout: false
 ]
 .right-column[
 
-<img class="right" src="./figures/control-system-with-disturbance.png"/>
+__Why is feedback control so powerful?__
 
-Properly designed feedback control functions in the face of
+1. Properly designed feedback control functions in the face of
 - Disturbances due to measurement and actuation noise
 - Strong plant dynamics
 - Non-stationary dynamics
 
+<img class="right" src="./figures/control-system-with-disturbance.png"/>
 ]
 
 ---
@@ -313,15 +264,39 @@ layout: false
   ### Disturbances
   ### Measurement
   
+]
+.right-column[
+
+__Why is feedback control so powerful?__
+
+1. Properly designed feedback control functions in the face of
+2. Actuation signal reveals system dynamics that are hard or impossible to measure directly
+- xxx
+- xxx
+
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control
+  ### Disturbances
+  ### Measurement
+  ### Decoupling
   
 ]
 .right-column[
 
-Actuation signal reveals system dynamics that are hard or impossible to measure directly
+__Why is feedback control so powerful?__
 
-Allows experimenters to decouple system variables that a __causally__, and possibly __reciprocally__ related
+1. Properly designed feedback control functions in the face of
+2. Actuation signal reveals system dynamics that are hard or impossible to measure directly
+3. Allows experimenters to decouple system variables that a __causally__, and possibly __reciprocally__ related
+- xxx
+- xxx
 
 ]
+
 ---
 layout: false
 .left-column[
