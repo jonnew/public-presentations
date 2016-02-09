@@ -1,0 +1,474 @@
+<!DOCTYPE html
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="remark,remarkjs,markdown,slideshow,presentation" />
+    <meta name="description" content="A simple, in-browser, markdown-driven slideshow tool." />
+    <title>Remark</title>
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body {
+        font-family: 'Droid Serif';
+      }
+      img.right {
+        max-width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+		vertical-align: middle;
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+	    font-size: 0.7em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: underline;
+      }
+      code {
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      blockquote {
+        background: #f9f9f9;
+        border-left: 10px solid #ccc;
+        margin: 1.5em 10px;
+        padding: 0.5em 10px;
+        quotes: "\201C""\201D""\2018""\2019";
+      }
+      blockquote p {
+        display: inline;
+      }
+      .pull-left {
+        float: left;
+        width: 47%;
+		
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+	  .image-middle {
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+	  }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+		font-size: 0.7em;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+      }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+##Feedback Control in Electrophysiology for<br>
+##Great Good
+
+Jon Newman
+
+[homepage](http://www.mit.edu/~jpnewman/) | [github](https://github.com/jonnew)
+
+2016 Feb
+
+---
+layout: false
+.left-column[
+  ## Closed-loop systems
+]
+.right-column[
+
+<img class="right" src="./figures/closed-loop-system.png" width="100%"/>
+
+- Output is used to inform the input in some way 
+- Does not imply __control over system state__
+- Most closed-loop electrophysiology falls into this category
+- "Activity-guided actuation"<sup>.red[1]</sup>
+- "Closed-loop stimulation"<sup>.red[1]</sup>
+
+.footnote[
+  .red[1] D lab paper.
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control systems
+]
+.right-column[
+
+<img class="right" src="./figures/control-system.png"/>
+
+<blockquote>
+... maintain a prescribed relationship
+between one system variable and another by using 
+their difference as a means of control <sup>.red[1]</sup>
+</blockquote>
+
+<blockquote>
+... a method of controlling a system by reinserting into it the
+results of its past performance <sup>.red[2]</sup>
+</blockquote>
+
+.footnote[
+  .red[1] AIEE Committee Report. _Proposed Symbols and Meanings for Feedback Control Systems_<br>
+  .red[2] Norbert Wiener _The Human Use of Human Beings: Cybernetics and Society_
+]
+
+]
+
+---
+layout: false
+.left-column[
+  ## Distinction
+  
+  Closed-loop<br>
+  vs.<br>
+  Feedback<br>
+  control
+]
+.right-column[
+
+<img class="right" src="./figures/system-set.png"/>
+
+Feedback controllers are closed-loop systems, but not necessarily vice versa
+
+Feedback control
+- __Error signal(s)__
+- __Continuous update__ of actuation 
+- __Control__ a system state to match reference
+
+Why does this matter?
+   
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control
+  ### History
+]
+.right-column[
+
+Ubiquitous in all domains of engineering
+
+Concept is ancient, literally
+
+.pull-left[
+<img class="right" src="./figures/wtrclock.gif" width="70%"/>
+- __Water clocks of Alexandria__
+- Circa 250 BC, Ktesbios<sup>.red[1]</sup>
+]
+
+.pull-right[
+<img class="right" src="./figures/Centrifugal_governor.png" />
+- __Centrifugal governor__
+- 1788, James Watt<sup>.red[2]</sup>
+]
+
+.footnote[
+  .red[1] Otto Mayr _The Origins of Feedback Control_<br>
+  .red[2] _Discoveries & Inventions of the Nineteenth Century_ 13th edition
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control
+  ### History
+]
+.right-column[
+
+.pull-left[
+<img class="right" src="./figures/Block_Diagram_for_Feedback.svg.png" width="70%"/>
+- __Negative feedback amplifier__<sup>.red[1]</sup>
+- 1927, Harold Steven Black
+- Allows communication systems to be instantiated using electrical/optical circuit elements 
+]
+
+.pull-right[
+<img class="right" src="./figures/googlecar.jpg" />
+- __Autonomous vehicles__
+- Tons of sensors and actuators
+- Very sophisticated control algorithms
+]
+
+Thermal control, power supply regulation, cruise control, autonomous vehicle operation, signal amplification, motor speed regulation, chemical reactor control, flow control, pressure regulation, optical power regulation, ...
+
+.footnote[
+  .red[1] https://en.wikipedia.org/wiki/Negative_feedback_amplifier<br>
+]
+]
+---
+layout: false
+.left-column[
+  ## Feedback control
+  ### Disturbances
+]
+.right-column[
+
+<img class="right" src="./figures/control-system-with-disturbance.png"/>
+
+Properly designed feedback control functions in the face of
+- Disturbances due to measurement and actuation noise
+- Strong plant dynamics
+- Non-stationary dynamics
+
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control
+  ### Disturbances
+  ### Measurement
+  
+  
+]
+.right-column[
+
+Actuation signal reveals system dynamics that are hard or impossible to measure directly
+
+Allows experimenters to decouple system variables that a __causally__, and possibly __reciprocally__ related
+
+]
+---
+layout: false
+.left-column[
+  ## Feedback control in Neuroscience
+  ### Voltage clamp
+  
+]
+.right-column[
+
+TODO
+
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control in Neuroscience
+  ### Virtual reality
+  
+]
+.right-column[
+
+TODO
+
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control in Neuroscience
+  ### Optogenetic feedback control
+  
+]
+.right-column[
+
+TODO
+
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control in Neuroscience
+  ### Optogenetic feedback control
+  ### Decoupling causal interactions
+  
+]
+.right-column[
+
+TODO
+
+]
+
+
+
+---
+template: inverse
+## End
+
+---
+template: inverse
+
+## Appendix
+
+---
+layout: false
+.left-column[
+  ## neurorighter
+]
+.right-column[
+  A complete NI DAQ-based multichannel data acquisition system with the following features:
+
+- Closed-loop recording, (MUXed) stimulation on all electrodes, and lots of
+auxiliary analog and digital IO
+
+- Semi low latency feedback (5-10 ms)
+
+- Extensible at runtime using plugin architecture
+
+- Low cost .red[*]
+
+<img class="right" src="./figures/https://dfb83c72-a-62cb3a1a-s-sites.googlegroups.com/site/neurorighter/home/main_spike-pile_small.jpg?attachauth=ANoY7cormTwIuniq_RlgujfUfEo4S-qpxHGDogHjW63UeCVy3rvjLayFYgxA0yfZTLkQvVdmfj1PkrhQagysHNT4gAvpyamhhRTsSUBKJvRBxj1PVBTwGFfdkwi-KVHPB2s1Fm9374CfvS7mjEuOWDagKnfmW0dkWoU0BY-MTpgwn7Iz1tPRcvWA3TxAOvK0aUQFZ75eBD8kp0REg5JzA4Hxhrv6SA6SbHRxaE7L8P0ce4pT7d8_sIw%3D&attredirects=0" width="70%"/>
+
+.footnote[
+.red[*] material cost < 10000 USD<BR>
+[repository link](https://github.com/rzellertownson/neurorighter)
+]
+
+]
+
+---
+layout: false
+.left-column[
+  ## neurorighter
+  ### - Example
+]
+.right-column[
+ Controlling network firing levels using multichannel stimulation and PI
+ controller
+
+<img class="right" src="./figures/http://www.frontiersin.org/files/Articles/32539/fncir-06-00098-HTML/image_m/fncir-06-00098-g005.jpg"/>
+]
+
+---
+layout: false
+.left-column[
+  ## neurorighter
+  ### - Used for actual science
+]
+.right-column[
+
+Newman et al. [*eLife* (4:e07192) 2015](http://www.nature.com/ncomms/2015/150309/ncomms7339/full/ncomms7339.html)
+
+<img class="right" src="./figures/http://cdn-site.elifesciences.org/content/elife/4/e07192/F11.medium.gif" />
+
+Fong et al. [*Nat. Commum.* (6:6339) 2015](http://www.nature.com/ncomms/2015/150309/ncomms7339/full/ncomms7339.html)
+
+<img class="right" src="./figures/http://www.nature.com/ncomms/2015/150309/ncomms7339/images_article/ncomms7339-f6.jpg" />
+
+]
+
+
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    <script>
+      var hljs = remark.highlighter.engine;
+    </script>
+    <script src="remark.language.js"></script>
+    <script>
+      var slideshow = remark.create({
+          highlightStyle: 'monokai',
+          highlightLanguage: 'remark',
+          highlightLines: true
+        }) ;
+    </script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-44561333-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script');
+        ga.src = 'https://ssl.google-analytics.com/ga.js';
+        var s = document.scripts[0];
+        s.parentNode.insertBefore(ga, s);
+      }());
+    </script>
+  </body>
+</html>
