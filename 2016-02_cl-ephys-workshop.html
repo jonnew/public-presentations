@@ -171,17 +171,17 @@ __Feedback control is one of the most important innovations in human history__
 - Concept is ancient, literally
 
 .pull-left[
-<img class="right" src="./figures/wtrclock.gif" width="70%"/>
-
 __Water clocks of Alexandria__
 - Circa 250 BC, Ktesbios<sup>.red[1]</sup>
+
+<img class="right" src="./figures/wtrclock.gif" width="70%"/>
 ]
 
 .pull-right[
-<img class="right" src="./figures/Centrifugal_governor.png" />
-
 __Centrifugal governor__
 - 1788, James Watt<sup>.red[2]</sup>
+
+<img class="right" src="./figures/Centrifugal_governor.png" />
 ]
 
 .footnote[
@@ -199,19 +199,19 @@ layout: false
 .right-column[
 
 .pull-left[
-<img class="right" src="./figures/Block_Diagram_for_Feedback.svg.png" width="70%"/>
-
  __Negative feedback amplifier__<sup>.red[1]</sup>
 - 1927, Harold Steven Black
 - Allows communication systems to be instantiated using electrical/optical circuit elements 
+
+<img class="right" src="./figures/Block_Diagram_for_Feedback.svg.png" width="70%"/>
 ]
 
 .pull-right[
-<img class="right" src="./figures/googlecar.jpg" />
-
 __Autonomous vehicles__
 - Tons of sensors and actuators
 - Very sophisticated control algorithms
+
+<img class="right" src="./figures/googlecar.jpg" />
 ]
 
 .red[__Feedback control is used everywhere__]
@@ -228,17 +228,6 @@ wire, servo motors, Etc, Etc, ...
 ]
 ]
 
-
----
-layout: false
-.left-column[
-  ## Feedback control in biological systems
-]
-.right-column[
-
-TODO
-]
-
 ---
 layout: false
 .left-column[
@@ -249,10 +238,11 @@ layout: false
 
 __Why is feedback control so powerful?__
 
-1. Properly designed feedback control functions in the face of
+1. Compensation
 - Disturbances due to measurement and actuation noise
 - Strong plant dynamics
 - Non-stationary dynamics
+- Stabilize systems and linearize input/output relationships
 
 <img class="right" src="./figures/control-system-with-disturbance.png"/>
 ]
@@ -269,11 +259,10 @@ layout: false
 
 __Why is feedback control so powerful?__
 
-1. Properly designed feedback control functions in the face of
-2. Actuation signal reveals system dynamics that are hard or impossible to measure directly
-- xxx
-- xxx
+1. Compensation
+2. Control signal can provide information about plant state and dynamics
 
+<img class="right" src="./figures/motor-speed-example.png"/>
 ]
 
 ---
@@ -291,9 +280,9 @@ __Why is feedback control so powerful?__
 
 1. Properly designed feedback control functions in the face of
 2. Actuation signal reveals system dynamics that are hard or impossible to measure directly
-3. Allows experimenters to decouple system variables that a __causally__, and possibly __reciprocally__ related
-- xxx
-- xxx
+3. Allows experimenters to decouple system variables that are __causally__, and possibly __reciprocally__ related
+
+<img class="right" src="./figures/control-system-decouple.png"/>
 
 ]
 
@@ -306,7 +295,22 @@ layout: false
 ]
 .right-column[
 
-TODO
+Feedback control to measure ionic currents that are difficult to measure otherwise
+
+- Simplified circuit diagram
+
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control in Neuroscience
+  ### Artificial embodiment
+  
+]
+.right-column[
+
+Feedback control to enforce learning rules in dissociated cortical networks.
 
 ]
 
@@ -319,8 +323,33 @@ layout: false
 ]
 .right-column[
 
-TODO
+Feedback control at the behavioral level in the larval zebrafish
 
+]
+
+---
+layout: false
+.left-column[
+  ## Optogenetics and feedback control
+  
+]
+.right-column[
+
+__Optogenetic<sup>.red[1, 2]</sup> tools are particularly well suited for use in feedback controls__
+<br>
+<br>
+<img class="right" src="./figures/og-summary_01.png"/>
+
+- Minimal electrical recording artifact
+- Relatively narrow excitation spectra
+- Bi-directional actuation
+- Genetic specificity 
+- Millisecond temporal resolution 
+
+.footnote[
+  .red[1] Zemelman B. et al. _Selective photostimulation of genetically chARGed neurons_, Neuron, 2002.<br>
+  .red[2] Boyden E.S. et al. _Millisecond-timescale, genetically targeted optical control of neural activity_, Nat. Neuro., 2005.
+]
 ]
 
 ---
@@ -332,25 +361,44 @@ layout: false
 ]
 .right-column[
 
-TODO
+<img class="right" src="./figures/optoclamp-apparatus.jpg" width="40%"/>
+<img class="right" src="./figures/F11.large.jpg"/>
 
+.footnote[
+  .red[1] J. Newman et al. _Optogenetic feedback control of neural activity_, eLife, 2015<br>
+]
 ]
 
 ---
 layout: false
 .left-column[
-  ## Feedback control in Neuroscience
-  ### Optogenetic feedback control
-  ### Decoupling causal interactions
+  ## Optogenetic feedback control
   
 ]
 .right-column[
 
-TODO
+Using optogentic feedback control to decoupling spiking and neurotransmission
+<img class="right" src="./figures/F11.large.jpg"/>
+
+.footnote[
+  .red[1] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015<br>
+]
 
 ]
 
 
+
+---
+layout: false
+.left-column[
+  ## Optogenetics and feedback control
+  
+]
+.right-column[
+
+Optogenetic tools are particularly well suited for use in feedback control of network activity.
+
+]
 
 ---
 template: inverse
