@@ -13,6 +13,7 @@
       /* Colors */
       .red    { color: #FF4943; }
       .gray   { color: #787878; }
+	  .lgray   { color: #d9d9d9; }
       .green  { color: #87A558; }
       .blue   { color: #41C8F0; }
       .yellow { color: #DBEC62; }
@@ -79,8 +80,8 @@ name: inverse
 layout: true
 class: center, middle, inverse
 ---
-##.grey[Feedback Control in Electrophysiology for<br>]
-##.red[Great Good]
+##.lgray[Feedback Control in Electrophysiology for<br>]
+##.lgray[Great Good]
 
 Jon Newman
 MWL@MIT
@@ -97,11 +98,12 @@ layout: false
 
 <img class="right" src="./figures/closed-loop-system.png" width="100%"/>
 
-- Output is used to inform the input in some way 
-- Does not imply __control over system state__
+- System output is used to inform the input in some way 
 - Most closed-loop electrophysiology falls into this category
-- "Activity-guided actuation"<sup>.red[1]</sup>
-- "Closed-loop stimulation"<sup>.red[1]</sup>
+  - "Activity-guided actuation"<sup>.red[1]</sup>
+  - "Closed-loop stimulation"<sup>.red[1]</sup>
+  
+- Does not imply __control over system state__
 
 .footnote[
   .red[1] D lab paper.
@@ -253,14 +255,13 @@ layout: false
   ## Feedback control
   ### Disturbances
   ### Measurement
-  
 ]
 .right-column[
 
 __Why is feedback control so powerful?__
 
 1. Compensation
-2. Control signal can provide information about plant state and dynamics
+2. Control signal reflects plant state and dynamics
 
 <img class="right" src="./figures/motor-speed-example.png"/>
 ]
@@ -280,11 +281,17 @@ __Why is feedback control so powerful?__
 
 1. Properly designed feedback control functions in the face of
 2. Actuation signal reveals system dynamics that are hard or impossible to measure directly
-3. Allows experimenters to decouple system variables that are __causally__, and possibly __reciprocally__ related
+3. Decouple system variables that are __causally__, and possibly __reciprocally__ related
 
 <img class="right" src="./figures/control-system-decouple.png"/>
 
 ]
+
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+## Feedback control in Neuroscience
 
 ---
 layout: false
@@ -295,9 +302,13 @@ layout: false
 ]
 .right-column[
 
-Feedback control to measure ionic currents that are difficult to measure otherwise
+Feedback control to measure ionic conductances that are difficult to measure otherwise
 
-- Simplified circuit diagram
+- Membrane voltage non-linearly, and reciprocally coupled to ionic conductances
+- Feedback control cancels conductances to hold the voltage
+- Current required for cancellation is a measure of the ionic current at the voltage setpoint
+
+<img class="right" src="./figures/voltage-clamp-diagram.png"/>
 
 ]
 
@@ -310,10 +321,45 @@ layout: false
 ]
 .right-column[
 
-Feedback control to enforce learning rules in dissociated cortical networks.
+__Feedback control to enforce learning rules in dissociated cortical networks.<sup>.red[1,2]</sup>__
 
+.pull-left[
+	<img class="right" src="./figures/animat.png"/>
+	<video controls loop>
+	  <source src="movie.mp4" type="video/mp4">
+	  <source src="movie.ogg" type="video/ogg">
+      Your browser does not support the video tag.
+    </video>
+]
+.pull-right[
+	<img class="right" src="./figures/animat-performance.png"/>
 ]
 
+.footnote[
+  .red[1] DeMarse T.B. et al., _The Neurally Controlled Animat: Biological Brains Acting with Simulated Bodies_ Auton. Robots, 2001<br>
+  .red[2] Bakkum D.J. et al. _Spatio-temporal electrical stimuli shape behavior of an embodied cortical network in a goal-directed learning task_, J. Neural Eng., 2008
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control in Neuroscience
+  ### Artificial embodiment
+  
+]
+.right-column[
+
+__The Silent Barrage Project<sup>.red[1,2]</sup>__
+
+<img class="right" src="./figures/fncir-06-00098-g009.png"/>
+
+.footnote[
+  .red[1] DeMarse T.B. et al., _The Neurally Controlled Animat: Biological Brains Acting with Simulated Bodies_ Auton. Robots, 2001<br>
+  .red[2] Bakkum D.J. et al. _Spatio-temporal electrical stimuli shape behavior of an embodied cortical network in a goal-directed learning task_, J. Neural Eng., 2008
+]
+
+]
 ---
 layout: false
 .left-column[
