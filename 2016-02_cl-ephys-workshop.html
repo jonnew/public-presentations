@@ -87,28 +87,7 @@ Jon Newman
 MWL@MIT
 2016 Feb
 
-[homepage](http://www.mit.edu/~jpnewman/) | [github](https://github.com/jonnew)
-
----
-layout: false
-.left-column[
-  ## Closed-loop systems
-]
-.right-column[
-
-<img class="right" src="./figures/closed-loop-system.png" width="100%"/>
-
-- System output is used to inform the input in some way 
-- Most closed-loop electrophysiology falls into this category
-  - "Activity-guided actuation"<sup>.red[1]</sup>
-  - "Closed-loop stimulation"<sup>.red[1]</sup>
-  
-- Does not imply __control over system state__
-
-.footnote[
-  .red[1] D lab paper.
-]
-]
+[homepage](http://www.mit.edu/~jpnewman/) | [github](https://github.com/jonnew) @jonnew
 
 ---
 layout: false
@@ -137,6 +116,26 @@ results of its past performance <sup>.red[2]</sup>
 
 ]
 
+---
+layout: false
+.left-column[
+  ## Closed-loop systems
+]
+.right-column[
+
+<img class="right" src="./figures/closed-loop-system.png" width="100%"/>
+
+- System output is used to inform the input in some way 
+- Most closed-loop electrophysiology falls into this category
+  - "Activity-guided actuation"<sup>.red[1]</sup>
+  - "Closed-loop stimulation"<sup>.red[1]</sup>
+  
+- Does not imply __control over system state__
+
+.footnote[
+  .red[1] D lab paper.
+]
+]
 ---
 layout: false
 .left-column[
@@ -480,8 +479,8 @@ __What triggers scaling?__
 <img class="right" src="./figures/scaling-route-a.png"/>
 
 .footnote[
-  .red[1] Leslie, K. R., et al. _TODO_ J. Neurosci., 2001 <br>
-  .red[2] Ibata, K ., et al., _TODO_  Neuron, 2008
+  .red[1] Leslie, K. R., et al. _Postsynaptic depolarization scales quantal amplitude in cortical pyramidal neurons_ J. Neurosci., 2001 <br>
+  .red[2] Ibata, K ., et al., _Rapid synaptic scaling induced by changes in postsynaptic firing_  Neuron, 2008
 ]
 ]
 
@@ -527,8 +526,8 @@ __What triggers scaling?__
 <img class="right" src="./figures/scaling-route-c.png"/>
 
 .footnote[
-  .red[1] Burrone, J., et al. _TODO_ Nature, 2002<br>
-  .red[2] Wilhelm, J. C., & Wenner, P. _TODO_ PNAS,  2008
+  .red[1] Burrone, J., et al. _Multiple forms of synaptic plasticity triggered by selective suppression of activity in individual neurons_ Nature, 2002<br>
+  .red[2] Wilhelm, J. C., & Wenner, P. _GABAA transmission is a critical step in the process of triggering homeostatic increases in quantal amplitude_ PNAS,  2008
 ]
 ]
 
@@ -572,7 +571,7 @@ __Optogenetic feedback control__
 ---
 layout: false
 .left-column[
-  ## Synaptic Scaling
+  ## Synaptic scaling
   ### Case study
   
 ]
@@ -592,7 +591,7 @@ __Optogenetic feedback control to decouple neurotransmission and spiking__
 ---
 layout: false
 .left-column[
-  ## Synaptic Scaling
+  ## Synaptic scaling
   ### Case study
   
 ]
@@ -611,7 +610,7 @@ __Optogenetic feedback control to decouple neurotransmission and spiking__
 ---
 layout: false
 .left-column[
-  ## Synaptic Scaling
+  ## Synaptic scaling
   ### Case study
   
 ]
@@ -629,7 +628,7 @@ __Optogenetic feedback control to decouple neurotransmission and spiking__
 ---
 layout: false
 .left-column[
-  ## Synaptic Scaling
+  ## Synaptic scaling
   ### Case study
   
 ]
@@ -649,7 +648,7 @@ __Optogenetic feedback control to decouple neurotransmission and spiking__
 ---
 layout: false
 .left-column[
-  ## Synaptic Scaling
+  ## Synaptic scaling
   ### Case study
   
 ]
@@ -678,12 +677,19 @@ layout: false
 
 ]
 .right-column[
-  __Spatial light modulation__
-  
   __Features of neural activity than firing rate__
+  - Temporal population firing patterns carry information
+  - Spatial light modulation
+  - Leverage genetic power of tools to control specific ensembles
+  - Enforce ensemble activity patterns using model-predictive control
+  <br>
+  <br>
+  <br>
+  <img class="right" src="./figures/pattern-controller.png"/>
   
-  __Hardware and software that is feedback control capable__
-
+.footnote[
+  .red[1] Grosenick, L. et al., _Closed-Loop and Activity-Guided Optogenetic Control_, Neuron, 2015<br>
+]
 ]
 
 ---
@@ -693,12 +699,15 @@ layout: false
 
 ]
 .right-column[
-  __Spatial light modulation__
-  
-  __Features of neural activity than firing rate__
-  
+
   __Hardware and software that is feedback control capable__
-  
+  - Accessible
+  - Easy to modify for a particular experiments
+  - Modular: ecosystem of tools that enable complex feedback control experiments
+  - Make feedback control __mainstream__ instead of exceptional
+  <br>
+  <br>
+  <br>
   <img class="right" src="./figures/open_source_mc_systems_simplified_time_course.png" width="80%"/>
   
 .footnote[
@@ -712,32 +721,44 @@ layout: false
 
 .pull-left[
 
-__Steve M. Potter__
+### Advising
+__Steve M. Potter__<br>
 __Matthew Wilson__
 
 ### Scaling project
-Peter Wenner (Emory University)
+Peter Wenner (Emory University)<br>
 Ming-fai Fong (now in Mark Bear's lab @ MIT)
 
-# Neurorighter and robotic embodiement
-Riley Zeller-Townson
-Doug Bakkum
-UWA team
-
+### Neurorighter & robotic embodiment
+Riley Zeller-Townson (Georgia Tech)<br>
+Doug Bakkum (Georgia Tech)<br>
+Silent Barrage Team
+- Guy Ben-Ary
+- Phil Gamblen
+- Peter Gee
+- Stephen Bobic
+- Douglas Swehla
 ]
 
 .pull-right[
 ### MIT
-Jakob Voigts
-Josh Siegle
-Carmen 
-
+Francisco Flores<br>
+Greg Hale<br>
+Collyn Messier<br>
+Hector Penagos<br>
+Josh Siegle (now at Allen)<br>
+Carmen Varela<br>
+Jakob Voigts<br>
+Jennie Young
 
 ### Funding
-CBMM
-NRSA
-COPN
-R01
+- NSF STC award CCF-1231216 
+- NIH F32 MH107086-01
+- NIH grant 1R01NS079757-01
+- NSF COPN grant 1238097
+<br>
+<br>
+<img class="right" src="./figures/logo-group.png" width="100%"/>
 
 ]
 
