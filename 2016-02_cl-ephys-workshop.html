@@ -168,7 +168,7 @@ layout: false
 ]
 .right-column[
 
-__Feedback control is one of the most important innovations in human history__
+__Feedback control is a major innovation in human history__
 - Ubiquitous in all domains of engineering
 - Concept is ancient, literally
 
@@ -234,7 +234,7 @@ wire, servo motors, industrial robot control, toilet bowl float, Etc, Etc, ...
 layout: false
 .left-column[
   ## Feedback control
-  ### Disturbances
+  ### Compensation
 ]
 .right-column[
 
@@ -253,7 +253,7 @@ __Why is feedback control so powerful?__
 layout: false
 .left-column[
   ## Feedback control
-  ### Disturbances
+  ### Compensation
   ### Measurement
 ]
 .right-column[
@@ -261,7 +261,8 @@ layout: false
 __Why is feedback control so powerful?__
 
 1. Compensation
-2. Control signal reflects plant state and dynamics
+2. Measurement
+- Control signal reflects plant state and dynamics
 
 <img class="right" src="./figures/motor-speed-example.png"/>
 ]
@@ -270,7 +271,7 @@ __Why is feedback control so powerful?__
 layout: false
 .left-column[
   ## Feedback control
-  ### Disturbances
+  ### Compensation
   ### Measurement
   ### Decoupling
   
@@ -279,19 +280,18 @@ layout: false
 
 __Why is feedback control so powerful?__
 
-1. Properly designed feedback control functions in the face of
-2. Actuation signal reveals system dynamics that are hard or impossible to measure directly
-3. Decouple system variables that are __causally__, and possibly __reciprocally__ related
+1. Compensation
+2. Measurement
+3. Decoupling
+- Can be used to separate system variables that are __causally__, and possibly __reciprocally__ related
 
 <img class="right" src="./figures/control-system-decouple.png"/>
 
 ]
 
-name: inverse
-layout: true
-class: center, middle, inverse
 ---
-## Feedback control in Neuroscience
+template: inverse
+##.lgray[Feedback Control in Neuroscience<br>]
 
 ---
 layout: false
@@ -302,13 +302,17 @@ layout: false
 ]
 .right-column[
 
-Feedback control to measure ionic conductances that are difficult to measure otherwise
+__Feedback control to measure ionic conductances__
 
 - Membrane voltage non-linearly, and reciprocally coupled to ionic conductances
 - Feedback control cancels conductances to hold the voltage
 - Current required for cancellation is a measure of the ionic current at the voltage setpoint
 
 <img class="right" src="./figures/voltage-clamp-diagram.png"/>
+
+.footnote[
+  .red[1] Cole, K. S. _Dynamic electrical characteristics of the squid axon membrane._, Annu. Rev. Physiol., 1949 
+]
 
 ]
 
@@ -346,8 +350,7 @@ layout: false
 __Feedback control to enforce learning rules in dissociated cortical networks.<sup>.red[1,2]</sup>__
  
 .pull-left[
-  <img class="right" src="./figures/animat.png"/>
-<br>
+  <img class="right" src="./figures/animat.png"/> <br>
   <img class="right" src="./videos/DougRat1st5DIV-FAST.gif" width="80%"/>
 ]
 .pull-right[
@@ -383,12 +386,12 @@ __The Silent Barrage Project<sup>.red[1]</sup>__
 ---
 layout: false
 .left-column[
-  ## Optogenetics and feedback control
+  ## Optogenetics
   
 ]
 .right-column[
 
-__Optogenetic<sup>.red[1, 2]</sup> tools are particularly well suited for use in feedback controls__
+__Optogenetic<sup>.red[1, 2]</sup> tools are particularly well suited for use in feedback control__
 <br>
 <br>
 <img class="right" src="./figures/og-summary_01.png"/>
@@ -405,30 +408,184 @@ __Optogenetic<sup>.red[1, 2]</sup> tools are particularly well suited for use in
 ]
 ]
 
+---
+template: inverse
+##.lgray[Case study]<br>
+###.lgray[Optogenetic feedback control to study synaptic scaling]
 
 ---
 layout: false
 .left-column[
   ## Synaptic scaling
+  ### Case study
+]
+.right-column[
+
+__Upward synaptic scaling__
+
+- Dissociated cortical networks
+- 24 hour bath application of 
+  - TTX: Stop spiking
+  - CNQX: Stop AMPAergic neurotransmission
+- Measure miniature EPSCs
+- Synaptic strength fo all excitatory synpases 'scales' in a homeostatic manner<sup>.red[1]</sup>
+<br>
+<br>
+<br>
+
+<img class="right" src="./figures/scaling-simple.png"/>
+
+.footnote[
+  .red[1] Turrigiano, G. et al. _Activity-dependent scaling of quantal amplitude in neocortical neurons_,  Nature, 1998<br>
+  .red[*] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study 
+]
+
+.right-column[
+
+__Upward synaptic scaling__
+
+<img class="right" src="./figures/scaling-distributions.jpg" width="90%"/>
+
+.footnote[
+  .red[*] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study
+]
+
+.right-column[
+
+__What triggers scaling?__
+
+- _Option 1:_ Reduced spiking → synaptic scaling<sup>.red[1, 2]</sup>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<img class="right" src="./figures/scaling-route-a.png"/>
+
+.footnote[
+  .red[1] Leslie, K. R., et al. _TODO_ J. Neurosci., 2001 <br>
+  .red[2] Ibata, K ., et al., _TODO_  Neuron, 2008
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study
+]
+
+.right-column[
+
+__What triggers scaling?__
+
+- _Option 1:_ Reduced spiking → synaptic scaling
+- _Option 2:_ Reduced transmission → reduced spiking → synaptic scaling<sup>.red[1]</sup>
+<br>
+<br>
+<br>
+
+<img class="right" src="./figures/scaling-route-b.png"/>
+
+.footnote[
+  .red[1] Turrigiano, G. et al. _Activity-dependent scaling of quantal amplitude in neocortical neurons_,  Nature, 1998<br>
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study
+]
+
+.right-column[
+
+__What triggers scaling?__
+
+- _Option 1:_ Reduced spiking → synaptic scaling
+- _Option 2:_ Reduced transmission → reduced spiking → synaptic scaling
+- _Option 3:_ Reduced transmission → synaptic scaling <sup>.red[1, 2]</sup>
+
+<img class="right" src="./figures/scaling-route-c.png"/>
+
+.footnote[
+  .red[1] Burrone, J., et al. _TODO_ Nature, 2002<br>
+  .red[2] Wilhelm, J. C., & Wenner, P. _TODO_ PNAS,  2008
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study
+]
+
+.right-column[
+
+__Oppotunity for feedback control__
+
+- _Option 1:_ Reduced spiking → synaptic scaling
+- _Option 2:_ Reduced transmission → reduced spiking → synaptic scaling
+- _Option 3:_ Reduced transmission → synaptic scaling <sup>.red[1,2 ]</sup>
+
+<img class="right" src="./figures/scaling-confound.png"/>
+
+]
+
+<!-- ---
+layout: false
+.left-column[
+  ## Synaptic Scaling
+  ### Case study
   
 ]
 .right-column[
 
-__Case study: decoupling neurotransmission to identify the trigger for synaptic scaling__
-<br>
-<br>
-Patch images, previous syn scaling results and citations
-<img class="right" src="./figures/og-summary_01.png"/>
-<br>
-- Synaptic scaling is XXX
+__Optogenetic feedback control__
 
-- It is hard to know what triggers it because neurotranmssion and spiking are causally and reciprocally related.
-- Diagram
+<img class="right" src="./figures/ncomms7339-f1.jpg" width="45%"/>
 
-- Results
 .footnote[
-  .red[1] Zemelman B. et al. _Selective photostimulation of genetically chARGed neurons_, Neuron, 2002.<br>
-  .red[2] Boyden E.S. et al. _Millisecond-timescale, genetically targeted optical control of neural activity_, Nat. Neuro., 2005.
+	.red[*] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015
+]
+] -->
+
+---
+layout: false
+.left-column[
+  ## Synaptic Scaling
+  ### Case study
+  
+]
+.right-column[
+
+__Optogenetic feedback control to decouple neurotransmission and spiking__
+
+<img class="right" src="./figures/optoclamp-apparatus.jpg" width="35%"/>
+<img class="right" src="./figures/F11.large.jpg"/>
+
+.footnote[
+  <!--.red[1] J. Newman et al. _Closed-loop, multichannel experimentation using the open-source NeuroRighter electrophysiology platform_, Front. Neural Circuits, 2013<br> -->
+  .red[2] J. Newman et al. _Optogenetic feedback control of neural activity_, eLife, 2015<br>
 ]
 ]
 
@@ -436,12 +593,14 @@ Patch images, previous syn scaling results and citations
 layout: false
 .left-column[
   ## Synaptic Scaling
-  ### Optogenetic feedback control
+  ### Case study
   
 ]
 .right-column[
 
-<img class="right" src="./figures/optoclamp-apparatus.jpg" width="40%"/>
+__Optogenetic feedback control to decouple neurotransmission and spiking__
+
+<img class="right" src="./figures/optoclamp-apparatus.jpg" width="35%"/>
 <img class="right" src="./figures/F11.large.jpg"/>
 
 .footnote[
@@ -452,14 +611,15 @@ layout: false
 ---
 layout: false
 .left-column[
-  ## Optogenetic feedback control
+  ## Synaptic Scaling
+  ### Case study
   
 ]
 .right-column[
 
-Using optogentic feedback control to decoupling spiking and neurotransmission
-- TODO: Image with different bin sizes
-<img class="right" src="./figures/F11.large.jpg"/>
+__Optogenetic feedback control to decouple neurotransmission and spiking__
+
+<img class="right" src="./figures/optoclamp-scaling.jpg"/>
 
 .footnote[
   .red[1] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015<br>
@@ -470,55 +630,98 @@ Using optogentic feedback control to decoupling spiking and neurotransmission
 layout: false
 .left-column[
   ## Synaptic Scaling
-  ### Neurotransmission vs. spiking
+  ### Case study
   
 ]
 .right-column[
 
-Decrased neurotransmission, not spiking, is the reason for the scaling effect.
+__Optogenetic feedback control to decouple neurotransmission and spiking__
 
+- Reduced neurotransmission causes upward synaptic scaling without a reduction in spiking activity
 
-- Meaning:
-- scaling may be epiphenominon
-- If it does exist in vivo and is the cause of some malities [xx], then this changes how it should be treated.
+<img class="right" src="./figures/ncomms7339-f7.jpg"/>
 
-Optogenetic tools are particularly well suited for use in feedback control of network activity.
+.footnote[
+  .red[1] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015<br>
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Synaptic Scaling
+  ### Case study
+  
+]
+.right-column[
+
+__Optogenetic feedback control to decouple neurotransmission and spiking__
+
+- Reduced neurotransmission causes upward synaptic scaling without a reduction in spiking activity
+
+- Homeostatic changes in synaptic strength may not preserve the relative weights of synapses
+  - Implications for memory formation and maintenance in the CNS
+  
+- May inform teatments of diseases associated with aberrant homeostatic excitatory regulation
+  - Tinnitus
+  - Some forms of epilepsy
+
+.footnote[
+  .red[1] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015<br>
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Optogenetic feedback control 2.0
+
+]
+.right-column[
+  __Spatial light modulation__
+  
+  __Features of neural activity than firing rate__
+  
+  __Hardware and software that is feedback control capable__
 
 ]
 
 ---
 layout: false
 .left-column[
-  ## Optenetic feedback control 2.0
-  ### Spatial light modulation
-  ### Control more interesting features of neural activity than firing rate
-  ### Hardware and software that is feedback control capable
+  ## Optogenetic feedback control 2.0
+
 ]
 .right-column[
-
-Decrased neurotransmission, not spiking, is the reason for the scaling effect.
-
-
-- Meaning:
-- scaling may be epiphenominon
-- If it does exist in vivo and is the cause of some malities [xx], then this changes how it should be treated.
-
-Optogenetic tools are particularly well suited for use in feedback control of network activity.
-
+  __Spatial light modulation__
+  
+  __Features of neural activity than firing rate__
+  
+  __Hardware and software that is feedback control capable__
+  
+  <img class="right" src="./figures/open_source_mc_systems_simplified_time_course.png" width="80%"/>
+  
+.footnote[
+  .red[1] Siegle, J.H. et al. _Neural ensemble communities: open-source approaches to hardware for large-scale electrophysiology_, Curr. Opin. Neurobiol., 2015<br>
 ]
-
+]
 
 ---
 layout: false
 ## Acknowledgements
 
-#### Potter lab
+.pull-left[
+### Potter lab
 
-#### Wenner lab
+### Wenner lab
+]
 
-#### Wilson lab
+.pull-right[
+### Wilson lab
 
-#### Funding
+### Funding
+
+]
 
 ---
 template: inverse
@@ -532,21 +735,17 @@ template: inverse
 ---
 layout: false
 .left-column[
-  ## neurorighter
+  ## Neurorighter
 ]
 .right-column[
-  A complete NI DAQ-based multichannel data acquisition system with the following features:
-
+__Open-source multichannel data acquisition system__
 - Closed-loop recording, (MUXed) stimulation on all electrodes, and lots of
 auxiliary analog and digital IO
-
 - Semi low latency feedback (5-10 ms)
-
 - Extensible at runtime using plugin architecture
-
 - Low cost .red[*]
 
-<img class="right" src="./figures/https://dfb83c72-a-62cb3a1a-s-sites.googlegroups.com/site/neurorighter/home/main_spike-pile_small.jpg?attachauth=ANoY7cormTwIuniq_RlgujfUfEo4S-qpxHGDogHjW63UeCVy3rvjLayFYgxA0yfZTLkQvVdmfj1PkrhQagysHNT4gAvpyamhhRTsSUBKJvRBxj1PVBTwGFfdkwi-KVHPB2s1Fm9374CfvS7mjEuOWDagKnfmW0dkWoU0BY-MTpgwn7Iz1tPRcvWA3TxAOvK0aUQFZ75eBD8kp0REg5JzA4Hxhrv6SA6SbHRxaE7L8P0ce4pT7d8_sIw%3D&attredirects=0" width="70%"/>
+<img class="right" src="./figures/fncir-06-00098-g001.jpg" width="55%"/>
 
 .footnote[
 .red[*] material cost < 10000 USD<BR>
@@ -554,38 +753,6 @@ auxiliary analog and digital IO
 ]
 
 ]
-
----
-layout: false
-.left-column[
-  ## neurorighter
-  ### - Example
-]
-.right-column[
- Controlling network firing levels using multichannel stimulation and PI
- controller
-
-<img class="right" src="./figures/http://www.frontiersin.org/files/Articles/32539/fncir-06-00098-HTML/image_m/fncir-06-00098-g005.jpg"/>
-]
-
----
-layout: false
-.left-column[
-  ## neurorighter
-  ### - Used for actual science
-]
-.right-column[
-
-Newman et al. [*eLife* (4:e07192) 2015](http://www.nature.com/ncomms/2015/150309/ncomms7339/full/ncomms7339.html)
-
-<img class="right" src="./figures/http://cdn-site.elifesciences.org/content/elife/4/e07192/F11.medium.gif" />
-
-Fong et al. [*Nat. Commum.* (6:6339) 2015](http://www.nature.com/ncomms/2015/150309/ncomms7339/full/ncomms7339.html)
-
-<img class="right" src="./figures/http://www.nature.com/ncomms/2015/150309/ncomms7339/images_article/ncomms7339-f6.jpg" />
-
-]
-
 
 
     </textarea>
