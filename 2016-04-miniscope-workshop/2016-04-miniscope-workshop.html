@@ -6,9 +6,18 @@
     <meta name="description" content="A simple, in-browser, markdown-driven slideshow tool." />
     <title>Remark</title>
     <style>
-      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
-      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      @font-face{
+        font-family: 'Droid Serif';
+        src: url('./fonts/DroidSerif.ttf');
+      }
+      @font-face{
+        font-family: 'Yanone Kaffeesatz';
+        src: url('./fonts/YanoneKaffeesatz-Regular.ttf');
+      }
+      @font-face{
+        font-family: 'Ubuntu Mono';
+        src: url('./fonts/UbuntuMono-Regular.ttf');
+      }
 
       /* Colors */
       .red    { color: #FF4943; }
@@ -239,7 +248,7 @@ template: inverse
 
 
     </textarea>
-    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    <script src="./scripts/remark-latest.min.js">
     <script>
       var hljs = remark.highlighter.engine;
     </script>
