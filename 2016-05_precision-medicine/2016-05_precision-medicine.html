@@ -53,6 +53,7 @@
       .pull-right { float: right; width: 47%; }
 	  .image-middle { display: inline-block; height: 100%; vertical-align: middle; } 
       .pull-right ~ p { clear: both;}
+	  .center-small { text-align: center; font-size: 0.7em; }
 
 
       #slideshow .slide .content code { font-size: 0.8em; }
@@ -568,9 +569,9 @@ layout: false
 ]
 .right-column[
 
-__Optogenetic feedback control__
+__Cultured cortical networks grown on MEAs__
 
-<img class="right" src="./fig/ncomms7339-f1.jpg" width="45%"/>
+<img class="right" src="./fig/cortical-culture-cells-and-activity.png" width="90%"/>
 
 .footnote[
 	.red[*] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015
@@ -588,7 +589,7 @@ layout: false
 
 __Optogenetic feedback control to decouple neurotransmission and spiking__
 
-<img class="right" src="./fig/optoclamp-apparatus.jpg" width="60%"\>
+<img class="right" src="./fig/optoclamp-apparatus.jpg" width="50%"\>
 
 .footnote[
   .red[1] J. Newman et al. _Closed-loop, multichannel experimentation using the open-source NeuroRighter electrophysiology platform_, Front. Neural Circuits, 2013<br>
@@ -627,6 +628,17 @@ __Optogenetic feedback control to decouple neurotransmission and spiking__
 
 <img class="right" src="./fig/optoclamp-scaling.jpg"/>
 
+.pull-left[
+.center-small[__Control burst__]
+<br>
+<img class="right" src="./vid/ca-control-burst.gif" width="80%"/>
+]
+.pull-right[
+.center-small[__Evoked burst with CNQX__]
+<br>
+<img class="right" src="./vid/ca-cnqx-evoked-burst.gif" width="80%"/>
+]
+
 .footnote[
   .red[1] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015<br>
 ]
@@ -647,6 +659,7 @@ __Optogenetic feedback control to decouple neurotransmission and spiking__
 
 <img class="right" src="./fig/ncomms7339-f7.jpg"/>
 
+
 .footnote[
   .red[1] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015<br>
 ]
@@ -657,6 +670,7 @@ layout: false
 .left-column[
   ## Synaptic scaling
   ### Case study
+  ### Implications
   
 ]
 .right-column[
@@ -667,16 +681,42 @@ __Optogenetic feedback control to decouple neurotransmission and spiking__
 
 - Homeostatic changes in synaptic strength may not preserve the relative weights of synapses
   - Implications for memory formation and maintenance in the CNS
-  
-- May inform teatments of diseases associated with aberrant homeostatic excitatory regulation
-  - Tinnitus
-  - Some forms of epilepsy
 
 .footnote[
   .red[1] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015<br>
 ]
 ]
 
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study
+  ### Implications
+  
+]
+.right-column[
+
+__Abbarent homeostatic plasticity__
+
+- Deafferentation 
+   - Homeostatic increases in sensitivity of neural tissue lacking normal input
+   - Unstable  neural circuits prone to paroxysmal  avalanches of action potentials <sup>.red[1]</sup>
+- Many diseases may be associated with aberrant homeostatic plasticity
+  - Tinnitus <sup>.red[2]</sup>
+  - TBI-induced epilepsy <sup>.red[3, 4]</sup>
+  - Chronic pain
+  - Distonia (involuntary muscle contractions)
+  
+- _Drugs that seek to directly modulate scaling should likely aim at the synapse rather than trying to regulate activity levels._
+
+.footnote[
+  .red[1] I. Timofeev _Neocortical seizures: initiation, development and cessation_ Neurosci. 2004.<br>
+  .red[2] S. Yang et al. _Homeostatic plasticity drives tinnitus perception in an animal model_ PNAS, 2011.<br>
+  .red[3] J.F. Annegers et al. _A population-based study of seizures after traumatic brain injuries_ NEJM, 1998.<br>
+  .red[4] I. Timofeev et al. _Posttraumatic epilepsy: the roles of synaptic plasticity_ The Neuroscientist, 2010.
+]
+]
 ---
 layout: false
 .left-column[
