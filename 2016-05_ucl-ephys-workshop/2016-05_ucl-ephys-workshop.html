@@ -89,8 +89,10 @@ name: inverse
 layout: true
 class: center, middle, inverse
 ---
-##.lgray[Real-time optical feedback to control<br>]
-##.lgray[and study neural dynamics]
+##.lgray[Feedback Control in Electrophysiology for<br>]
+##.lgray[Great Good]
+
+### Next Gen (Open) Ephys Workshop at SWC
 
 Jon Newman
 MWL@MIT
@@ -333,16 +335,77 @@ layout: false
 ]
 .right-column[
 
-__Closed-loop siezure suppression__<sup>.red[1, 2, 3]</sup>
-- Often lack an error signal, so not truly feedback control
+__Closed-loop seizure suppression__<sup>.red[1, 2, 3]</sup>
 
 <img class="right" src="./fig/cl-seizure.jpg"/ width="75%">
-
 
 .footnote[
   .red[1] Berényi et al. _Closed-Loop Control of Epilepsy by Transcranial Electrical Stimulation_, Science 2012Zemelman B. et al. _Selective photostimulation of genetically chARGed neurons_, Neuron, 2002.<br>
   .red[2] Paz J.T. et al. _Closed-loop optogenetic control of thalamus as a tool for interrupting seizures after cortical injury_, Nat. Neuro., 2012.<br>
-  .red[3] Krook-Magnuson et al. _On-demand optogenetic control of spontaneous seizures in temporal lobe epilepsy_, Nat. Commun., 2012
+  .red[3] Krook-Magnuson et al. _On-demand optogenetic control of spontaneous seizures in temporal lobe epilepsy_, Nat. Commun., 2012<br>
+  .red[*] Lacks an error signal, so not truly feedback control
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control in Neuroscience
+  ### SWR Suppression
+  
+]
+.right-column[
+
+__Closed-loop hippocampal sharp wave-ripple suppression__
+
+.pull-left[
+__During Sleep__
+- Interferes with acquisition of spatial reference memory<sup>.red[1, 2]</sup>
+]
+
+.pull-right[
+__During Behavior__
+  - Interferes spatial working memory<sup>.red[3]</sup>
+]
+
+<img class="right" src="./fig/swr-supression.png"/ width="100%">
+
+.footnote[
+  .red[1] Girardeau G. et al. _Selective suppression of hippocampal ripples impairs spatial memory_, Nat. Neurosci., 2009.<br>
+  .red[2] Ego-Stengel V. & Wilson M.A. et al. _Disruption of ripple-associated hippocampal activity during rest impairs spatial learning in the rat_, Hippocampus, 2009.<br>
+  .red[3] Jadhav S.P. et al. _Awake hippocampal sharp-wave ripples support spatial memory_, Science, 2012.<br>
+  .red[*] Lacks an error signal, so not truly feedback control
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control in Neuroscience
+  ### LFP-phase dependent stimulation
+  
+]
+.right-column[
+
+__Optogenetic suppression of CA1 pyramidal cells at particular theta phases__<sup>.red[1]</sup>
+
+.pull-left[
+__Inhibit CA1 at theta peak__
+  - Only improves WM performance during encoding phase
+]
+
+.pull-right[
+__Inhibit CA1 at theta trough__
+  - Only improves WM performance during retrieval phase
+]
+
+<img class="right" src="./fig/siegle-phase-specific-stim.jpg"/ width="75%">
+<img class="right" src="./fig/siegle-phase-specific-stim-behavior.jpg"/ width="50%">
+
+
+.footnote[
+  .red[1] Siegle J.H. & Wilson. M.A. _Enhancement of encoding and retrieval functions through theta phase-specific manipulation of hippocampus_, eLife, 2014.<br>
+  .red[*] Lacks an error signal, so not truly feedback control
 ]
 ]
 
@@ -394,31 +457,163 @@ __The Silent Barrage Project<sup>.red[1]</sup>__
 ---
 layout: false
 .left-column[
-  ## Optogenetics
+  ## Feedback control in Neuroscience
+  ### Origin of synaptic scaling 
   
 ]
 .right-column[
 
-__Optogenetic<sup>.red[1, 2]</sup> tools are particularly well suited for use in feedback control__
-<br>
-<br>
-<img class="right" src="./fig/og-summary_01.png"/>
+__Optogenetic feedback control to decouple neurotransmission and spiking__
 
-- Minimal electrical recording artifact
-- Relatively narrow excitation spectra
-- Bi-directional actuation
-- Genetic specificity 
-- Millisecond temporal resolution 
+<img class="right" src="./fig/optoclamp-scaling.jpg"/>
+
+.pull-left[
+.center-small[__Control burst__]
+<br>
+<img class="right" src="./vid/ca-control-burst.gif" width="80%"/>
+]
+.pull-right[
+.center-small[__Evoked burst with CNQX__]
+<br>
+<img class="right" src="./vid/ca-cnqx-evoked-burst.gif" width="80%"/>
+]
 
 .footnote[
-  .red[1] Zemelman B. et al. _Selective photostimulation of genetically chARGed neurons_, Neuron, 2002.<br>
-  .red[2] Boyden E.S. et al. _Millisecond-timescale, genetically targeted optical control of neural activity_, Nat. Neuro., 2005.
+  .red[1] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015<br>
+  .red[2] J. Newman et al. _Closed-loop, multichannel experimentation using the open-source NeuroRighter electrophysiology platform_, Front. Neural Circuits, 2013<br>
 ]
 ]
 
 ---
+layout: false
+.left-column[
+  ## Future of feedback control in Neuroscience
+
+]
+.right-column[
+__ Control features of neural activity other than firing rate__
+  - Temporal population firing patterns carry information
+  - Spatial light modulationto control specific ensembles
+  - Enforce ensemble activity patterns using model-predictive control
+  
+__Closed-loop systems for dynamics-finding and decoding__
+  - Real-time decoding of neural ensembles
+  - Real-time systems identification 
+  - High-bandwidth tools that are optimized for __direct__, __low overhead__ interaction with __GPU coprocessors__
+
+
+  <img class="right" src="./fig/pattern-controller.png" width="90%" />
+  
+.footnote[
+  .red[1] Grosenick, L. et al., _Closed-Loop and Activity-Guided Optogenetic Control_, Neuron, 2015<br>
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Future of feedback control in Neuroscience
+
+]
+.right-column[
+
+__Hardware and software that is feedback control capable__
+
+  - __Open__ 
+  - Accessible
+  - Easy to modify for a particular experiments
+  - Modular: ecosystem of tools that enable complex feedback control experiments
+  - __Goal: Make feedback control mainstream instead of exceptional__
+  <br>
+  <br>
+  <img class="right" src="./fig/open_source_mc_systems_simplified_time_course.png" width="75%"/>
+  
+.footnote[
+  .red[1] Siegle, J.H. et al. _Neural ensemble communities: open-source approaches to hardware for large-scale electrophysiology_, Curr. Opin. Neurobiol., 2015<br>
+]
+]
+
+---
+layout: false
+## Acknowledgements
+
+.pull-left[
+
+### Advising
+__Steve M. Potter__<br>
+__Matthew Wilson__
+
+### Scaling project
+Peter Wenner (Emory University)<br>
+Ming-fai Fong (now in Mark Bear's lab @ MIT)
+
+### Neurorighter & robotic embodiment
+Riley Zeller-Townson (Georgia Tech)<br>
+Doug Bakkum (Georgia Tech)<br>
+Silent Barrage Team
+- Guy Ben-Ary
+- Phil Gamblen
+- Peter Gee
+- Stephen Bobic
+- Douglas Swehla
+]
+
+.pull-right[
+### MIT
+Francisco Flores<br>
+Greg Hale<br>
+Collyn Messier<br>
+Hector Penagos<br>
+Josh Siegle (now at Allen)<br>
+Carmen Varela<br>
+Jakob Voigts<br>
+Jennie Young
+
+### Funding
+- NSF STC award CCF-1231216 
+- NIH F32 MH107086-01
+- NIH grant 1R01NS079757-01
+- NSF COPN grant 1238097
+<br>
+<br>
+<img class="right" src="./fig/logo-group.png" width="100%"/>
+
+]
+
+---
 template: inverse
-##.lgray[Case study]<br>
+## End
+
+---
+template: inverse
+
+##.lgray[Appendix 1: NeuroRighter]<br>
+
+---
+layout: false
+.left-column[
+  ## Neurorighter
+]
+.right-column[
+__Open-source multichannel data acquisition system__
+- Closed-loop recording, (MUXed) stimulation on all electrodes, and lots of
+auxiliary analog and digital IO
+- Semi low latency feedback (5-10 ms)
+- Extensible at runtime using plugin architecture
+- Low cost .red[*]
+
+<img class="right" src="./fig/fncir-06-00098-g001.jpg" width="55%"/>
+
+.footnote[
+.red[*] material cost < 10000 USD<BR>
+[repository link](https://github.com/rzellertownson/neurorighter)
+]
+
+]
+
+---
+template: inverse
+##.lgray[Appendix 2: Case study]<br>
 ###.lgray[Optogenetic feedback control to study synaptic scaling]
 
 ---
@@ -640,6 +835,7 @@ __Optogenetic feedback control to decouple neurotransmission and spiking__
 
 .footnote[
   .red[1] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015<br>
+  .red[2] J. Newman et al. _Closed-loop, multichannel experimentation using the open-source NeuroRighter electrophysiology platform_, Front. Neural Circuits, 2013<br>
 ]
 ]
 
@@ -717,129 +913,6 @@ __Abbarent homeostatic plasticity__
 ]
 ]
 ---
-layout: false
-.left-column[
-  ## Optogenetic feedback control 2.0
-
-]
-.right-column[
-  __Features of neural activity than firing rate__
-  - Temporal population firing patterns carry information
-  - Spatial light modulation
-  - Leverage genetic power of tools to control specific ensembles
-  - Enforce ensemble activity patterns using model-predictive control
-  <br>
-  <br>
-  <br>
-  <img class="right" src="./fig/pattern-controller.png"/>
-  
-.footnote[
-  .red[1] Grosenick, L. et al., _Closed-Loop and Activity-Guided Optogenetic Control_, Neuron, 2015<br>
-]
-]
-
----
-layout: false
-.left-column[
-  ## Optogenetic feedback control 2.0
-
-]
-.right-column[
-
-  __Hardware and software that is feedback control capable__
-  - Accessible
-  - Easy to modify for a particular experiments
-  - Modular: ecosystem of tools that enable complex feedback control experiments
-  - Make feedback control __mainstream__ instead of exceptional
-  <br>
-  <br>
-  <br>
-  <img class="right" src="./fig/open_source_mc_systems_simplified_time_course.png" width="80%"/>
-  
-.footnote[
-  .red[1] Siegle, J.H. et al. _Neural ensemble communities: open-source approaches to hardware for large-scale electrophysiology_, Curr. Opin. Neurobiol., 2015<br>
-]
-]
-
----
-layout: false
-## Acknowledgements
-
-.pull-left[
-
-### Advising
-__Steve M. Potter__<br>
-__Matthew Wilson__
-
-### Scaling project
-Peter Wenner (Emory University)<br>
-Ming-fai Fong (now in Mark Bear's lab @ MIT)
-
-### Neurorighter & robotic embodiment
-Riley Zeller-Townson (Georgia Tech)<br>
-Doug Bakkum (Georgia Tech)<br>
-Silent Barrage Team
-- Guy Ben-Ary
-- Phil Gamblen
-- Peter Gee
-- Stephen Bobic
-- Douglas Swehla
-]
-
-.pull-right[
-### MIT
-Francisco Flores<br>
-Greg Hale<br>
-Collyn Messier<br>
-Hector Penagos<br>
-Josh Siegle (now at Allen)<br>
-Carmen Varela<br>
-Jakob Voigts<br>
-Jennie Young
-
-### Funding
-- NSF STC award CCF-1231216 
-- NIH F32 MH107086-01
-- NIH grant 1R01NS079757-01
-- NSF COPN grant 1238097
-<br>
-<br>
-<img class="right" src="./fig/logo-group.png" width="100%"/>
-
-]
-
----
-template: inverse
-## End
-
----
-template: inverse
-
-## Appendix
-
----
-layout: false
-.left-column[
-  ## Neurorighter
-]
-.right-column[
-__Open-source multichannel data acquisition system__
-- Closed-loop recording, (MUXed) stimulation on all electrodes, and lots of
-auxiliary analog and digital IO
-- Semi low latency feedback (5-10 ms)
-- Extensible at runtime using plugin architecture
-- Low cost .red[*]
-
-<img class="right" src="./fig/fncir-06-00098-g001.jpg" width="55%"/>
-
-.footnote[
-.red[*] material cost < 10000 USD<BR>
-[repository link](https://github.com/rzellertownson/neurorighter)
-]
-
-]
-
-
     </textarea>
     <script src="./scripts/remark-latest.min.js">
     <script>
