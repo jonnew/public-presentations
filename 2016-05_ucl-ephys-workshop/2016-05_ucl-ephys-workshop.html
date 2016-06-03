@@ -127,48 +127,6 @@ results of its past performance <sup>.red[2]</sup>
 
 ]
 
----
-layout: false
-.left-column[
-  ## Closed-loop systems
-]
-.right-column[
-
-<img class="right" src="./fig/closed-loop-system.png" width="100%"/>
-
-- System output is used to inform the input in some way 
-- Most closed-loop electrophysiology falls into this category
-  - "Activity-guided actuation"<sup>.red[1]</sup>
-  - "Closed-loop stimulation"<sup>.red[1]</sup>
-  
-- Does not imply __control over system state__
-
-.footnote[
-  .red[1] D lab paper.
-]
-]
----
-layout: false
-.left-column[
-  ## Distinction
-  
-  Closed-loop<br>
-  vs.<br>
-  Feedback<br>
-  control
-]
-.right-column[
-
-<img class="right" src="./fig/system-set.png"/>
-
-__Feedback control systems are closed-loop systems, but not necessarily vice versa__
-  - Error signal(s)
-  - Continuous update of actuation 
-  - Control over a system state to match reference
-
-.red[__Why does this matter__?]
-   
-]
 
 ---
 layout: false
@@ -444,14 +402,16 @@ layout: false
 ]
 .right-column[
 
-__The Silent Barrage Project<sup>.red[1]</sup>__
-
+__The Silent Barrage Project<sup>.red[1, *]</sup>__
+<br>
+<br>
+<br>
 <img class="right" src="./fig/fncir-06-00098-g009.jpg"/>
 
 .footnote[
-  .red[1] http://silentbarrage.com
+  .red[1] http://silentbarrage.com <br>
+  .red[*] Riley Zeller-Townson, Doug Bakkum, Guy Ben-Ary, Phil Gamblen, Peter Gee, Stephen Bobic, and Douglas Swehla
 ]
-
 ]
 
 ---
@@ -484,6 +444,7 @@ __Optogenetic feedback control to decouple neurotransmission and spiking__
 ]
 ]
 
+ 
 ---
 layout: false
 .left-column[
@@ -491,7 +452,7 @@ layout: false
 
 ]
 .right-column[
-__ Control features of neural activity other than firing rate__
+__ Control features of neural activity other than firing rate and LFP events__
   - Temporal population firing patterns carry information
   - Spatial light modulationto control specific ensembles
   - Enforce ensemble activity patterns using model-predictive control
@@ -502,7 +463,7 @@ __Closed-loop systems for dynamics-finding and decoding__
   - High-bandwidth tools that are optimized for __direct__, __low overhead__ interaction with __GPU coprocessors__
 
 
-  <img class="right" src="./fig/pattern-controller.png" width="90%" />
+  <img class="right" src="./fig/pattern-controller.png" width="85%" />
   
 .footnote[
   .red[1] Grosenick, L. et al., _Closed-Loop and Activity-Guided Optogenetic Control_, Neuron, 2015<br>
@@ -510,28 +471,8 @@ __Closed-loop systems for dynamics-finding and decoding__
 ]
 
 ---
-layout: false
-.left-column[
-  ## Future of feedback control in Neuroscience
-
-]
-.right-column[
-
-__Hardware and software that is feedback control capable__
-
-  - __Open__ 
-  - Accessible
-  - Easy to modify for a particular experiments
-  - Modular: ecosystem of tools that enable complex feedback control experiments
-  - __Goal: Make feedback control mainstream instead of exceptional__
-  <br>
-  <br>
-  <img class="right" src="./fig/open_source_mc_systems_simplified_time_course.png" width="75%"/>
-  
-.footnote[
-  .red[1] Siegle, J.H. et al. _Neural ensemble communities: open-source approaches to hardware for large-scale electrophysiology_, Curr. Opin. Neurobiol., 2015<br>
-]
-]
+template: inverse
+## End
 
 ---
 layout: false
@@ -579,10 +520,6 @@ Jennie Young
 <img class="right" src="./fig/logo-group.png" width="100%"/>
 
 ]
-
----
-template: inverse
-## End
 
 ---
 template: inverse
