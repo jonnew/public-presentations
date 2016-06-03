@@ -262,7 +262,7 @@ __Why is feedback control so powerful?__
 
 ---
 template: inverse
-##.lgray[Demo: PI Control of brushed DC motor<br>]
+##.lgray[Demo: Proportional Integral Control of DC Motor<br>]
 
 ---
 layout: false
@@ -271,7 +271,9 @@ layout: false
 ]
 .right-column[
 
-__TENSS Way: do it for real!__
+##TENSS Way: do it for real!
+<br>
+<br>
 <br>
 <br>
 <img class="right" src="./fig/motor-speed-example.png"/>
@@ -286,10 +288,11 @@ layout: false
 ]
 .right-column[
 
-__Sensor: Hall Effect Sensor__
+## Hall Effect Sensor
 
-- A transducer that varies its output voltage in response to a magnetic field. 
-- _Hall voltage_: directly proportional to the strength of the magnetic field
+- A transducer that varies its output voltage in response to a changing
+magnetic field. 
+- __Hall voltage__: directly proportional to the strength of the magnetic field
 passing through the semiconductor material
 
 .pull-left[
@@ -311,7 +314,7 @@ layout: false
 ]
 .right-column[
 
-__Actuator: Field Effect Transistor__
+## Field Effect Transistor
 
 - Used as variable resistor for a high-power supply 
 - Saturation region
@@ -329,12 +332,12 @@ layout: false
 ]
 .right-column[
 
-__Control Logic: Proportional Integral Control__
+## Proportional Integral Control
 
 - Implemented on an Arduino
-- _Target_: Motor Speed in Hz
-- _Measure_: Pulses/sec from Hall Effect Sensor
-- _Output_: Analog voltage to FET gate pin
+- __Target:__ Motor Speed in Hz
+- __Measure:__ Pulses/sec from Hall Effect Sensor
+- __Output:__ Analog voltage to FET gate pin
 
 <img class="right" src="./fig/pi-contoller.png"/>
 <img class="right" src="./fig/arduino.jpg" width="50%" />
@@ -348,8 +351,7 @@ layout: false
 ]
 .right-column[
 
-__TENSS Way: do it for real!__
-<br>
+##TENSS Way: do it for real!
 <br>
 <br>
 <br>
