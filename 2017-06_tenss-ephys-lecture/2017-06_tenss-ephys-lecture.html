@@ -1,0 +1,932 @@
+<!DOCTYPE html
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="remark,remarkjs,markdown,slideshow,presentation" />
+    <meta name="description" content="A simple, in-browser, markdown-driven slideshow tool." />
+    <title>Remark</title>
+    <style>
+      @font-face{
+        font-family: 'Droid Serif';
+        src: url('./fonts/DroidSerif.ttf');
+      }
+      @font-face{
+        font-family: 'Yanone Kaffeesatz';
+        src: url('./fonts/YanoneKaffeesatz-Regular.ttf');
+      }
+      @font-face{
+        font-family: 'Ubuntu Mono';
+        src: url('./fonts/UbuntuMono-Regular.ttf');
+      }
+
+      /* Colors */
+      .red    { color: #FF4943; }
+      .gray   { color: #787878; }
+	  .lgray   { color: #d9d9d9; }
+      .green  { color: #87A558; }
+      .blue   { color: #41C8F0; }
+      .yellow { color: #DBEC62; }
+
+      html, body { font-family: 'Droid Serif'; }
+      img.right { max-width: 100%; display: block; margin-left: auto; margin-right: auto; vertical-align: middle; }
+      h1, h2, h3 { font-family: 'Yanone Kaffeesatz'; font-weight: 400; margin-bottom: 0; }
+      blockquote { 
+        background: #f9f9f9; 
+        border-left: 10px solid #ccc; 
+        margin: 1.5em 10px; 
+        padding: 0.5em 10px; 
+        quotes: "\201C""\201D""\2018""\2019"; 
+      }
+      blockquote p { display: inline; }
+      li p { line-height: 1.25em; }
+      a, a > code { color: #FF4943; text-decoration: underline; }
+      code { background: #e7e8e2; border-radius: 5px; }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote { position: absolute; bottom: 3em; font-size: 0.7em; }
+      .small { font-size: 0.8em; }
+      .large { font-size: 2em; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left { float: left; width: 47%; }
+      .pull-right { float: right; width: 47%; }
+	  .image-middle { display: inline-block; height: 100%; vertical-align: middle; } 
+      .pull-right ~ p { clear: both;}
+	  .center-small { text-align: center; font-size: 0.7em; }
+
+      #slideshow .slide .content code { font-size: 0.8em; }
+      #slideshow .slide .content pre code { font-size: 0.9em; padding: 15px; }
+
+      .inverse { background: #272822; color: #777872; text-shadow: 0 0 20px #333; }
+      .inverse h1, .inverse h2 { color: #f3f3f3; line-height: 0.8em; }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote { bottom: 12px; left: 20px; font-size: 0.7em; }
+      #slide-how .slides { font-size: 0.9em; position: absolute; top:  151px; right: 140px; }
+      #slide-how .slides h3 { margin-top: 0.2em; }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first { background: #fff; position: absolute; top: 20%; left: 20%; z-index: 1; }
+      #slide-how .slides .second { position: relative; background: #fff; z-index: 0; }
+
+      /* Two-column layout */
+      .left-column { color: #777; width: 20%; height: 92%; float: left; }
+      .left-column h2:last-of-type, .left-column h3:last-child { color: #000; }
+      .right-column { width: 75%; float: right; padding-top: 1em; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+##.lgray[Feedback Control in Electrophysiology for<br>]
+##.lgray[Great Good]
+
+### TENSS 2016
+
+Jon Newman<br>
+Open Ephys<br> 
+MWL@MIT
+
+2016 June
+
+[homepage](http://www.mit.edu/~jpnewman/) | [github](https://github.com/jonnew) @jonnew
+
+---
+layout: false
+.left-column[
+  ## Feedback control systems
+]
+.right-column[
+
+<img class="right" src="./fig/control-system.png"/>
+
+<blockquote>
+... maintain a prescribed relationship
+between one system variable and another by using 
+their difference as a means of control <sup>.red[1]</sup>
+</blockquote>
+
+<blockquote>
+... a method of controlling a system by reinserting into it the
+results of its past performance <sup>.red[2]</sup>
+</blockquote>
+
+.footnote[
+  .red[1] AIEE Committee Report. _Proposed Symbols and Meanings for Feedback Control Systems_<br>
+  .red[2] Norbert Wiener _The Human Use of Human Beings: Cybernetics and Society_
+]
+
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control
+  ### History
+]
+.right-column[
+
+__Feedback control is a major innovation in human history__
+- Ubiquitous in all domains of engineering
+- Concept is ancient, literally
+
+.pull-left[
+__Water clocks of Alexandria__
+- Circa 250 BC, Ktesbios<sup>.red[1]</sup>
+
+<img class="right" src="./fig/wtrclock.gif" width="70%"/>
+]
+
+.pull-right[
+__Centrifugal governor__
+- 1788, James Watt<sup>.red[2]</sup>
+
+<img class="right" src="./fig/Centrifugal_governor.png" />
+]
+
+.footnote[
+  .red[1] Otto Mayr _The Origins of Feedback Control_<br>
+  .red[2] _Discoveries & Inventions of the Nineteenth Century_ 13th edition
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control
+  ### History
+]
+.right-column[
+
+.pull-left[
+ __Negative feedback amplifier__<sup>.red[1]</sup>
+- 1927, Harold Steven Black
+- Allows communication systems to be instantiated using electrical/optical circuit elements 
+
+<img class="right" src="./fig/Block_Diagram_for_Feedback.svg.png" width="70%"/>
+]
+
+.pull-right[
+__Autonomous vehicles__
+- Tons of sensors and actuators
+- Very sophisticated control algorithms
+
+<img class="right" src="./fig/googlecar.jpg" />
+]
+
+.red[__Feedback control is used everywhere__]
+.small[
+Thermal control, voltage and current supply regulation, automobile cruise control,
+anti-lock brakes, electrical amplifiers, autonomous robots, quadcopters,
+satellite positioning control, motor speed regulation, chemical reactor flow
+control, pressure regulation, optical power regulation, pH control, fly by
+wire, servo motors, industrial robot control, toilet bowl float, Etc, Etc, ...
+]
+
+.footnote[
+  .red[1] https://en.wikipedia.org/wiki/Negative_feedback_amplifier<br>
+]
+]
+
+
+---
+layout: false
+.left-column[
+  ## Feedback control
+  ### Compensation
+]
+.right-column[
+
+__Why is feedback control so powerful?__
+
+1. Compensation
+- Disturbances due to measurement and actuation noise
+- Strong plant dynamics
+- Non-stationary dynamics
+- Stabilize systems and linearize input/output relationships
+
+<img class="right" src="./fig/control-system-with-disturbance.png"/>
+]
+
+
+---
+layout: false
+.left-column[
+  ## Feedback control
+  ### Compensation
+  ### Decoupling
+  
+]
+.right-column[
+
+__Why is feedback control so powerful?__
+
+1. Compensation
+2. Decoupling
+- Can be used to separate system variables that are __causally__, and possibly __reciprocally__ related
+
+<img class="right" src="./fig/control-system-decouple.png"/>
+
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control
+  ### Compensation
+  ### Decoupling
+  ### Measurement
+]
+.right-column[
+
+__Why is feedback control so powerful?__
+
+1. Compensation
+2. Decoupling
+3. Measurement
+- Control signal reflects plant state and dynamics
+
+<img class="right" src="./fig/motor-speed-example.png"/>
+]
+
+---
+template: inverse
+##.lgray[Demo: Proportional Integral Control of DC Motor<br>]
+
+---
+layout: false
+.left-column[
+  ## Demo: motor speed control 
+]
+.right-column[
+
+##TENSS Way: do it for real!
+<br>
+<br>
+<br>
+<br>
+<img class="right" src="./fig/motor-speed-example.png"/>
+
+]
+
+---
+layout: false
+.left-column[
+  ## Demo: motor speed control 
+  ### Sensor
+]
+.right-column[
+
+## Hall Effect Sensor
+
+- A transducer that varies its output voltage in response to a changing
+magnetic field. 
+- __Hall voltage__: directly proportional to the strength of the magnetic field
+passing through the semiconductor material
+
+.pull-left[
+    <img class="right" src="./fig/hall-effect-sensor.gif"/>
+]
+.pull-right[
+    <img class="right" src="./fig/Hall_sensor_tach.gif"/>
+]
+<br>
+<br>
+
+]
+
+---
+layout: false
+.left-column[
+  ## Demo: motor speed control 
+  ### Actuator 
+]
+.right-column[
+
+## Field Effect Transistor
+
+- Used as variable resistor for a high-power supply 
+- Saturation region
+
+<img class="right" src="./fig/n-fet.jpg"/ width="50%" />
+<img class="right" src="./fig/mosfet-linear.png" width="80%" />
+
+]
+
+---
+layout: false
+.left-column[
+  ## Demo: motor speed control 
+  ### Control Logic 
+]
+.right-column[
+
+## Proportional Integral Control
+
+- Implemented on an Arduino
+- __Target:__ Motor Speed in Hz
+- __Measure:__ Pulses/sec from Hall Effect Sensor
+- __Output:__ Analog voltage to FET gate pin
+
+<img class="right" src="./fig/pi-contoller.png"/>
+<img class="right" src="./fig/arduino.jpg" width="50%" />
+
+]
+
+---
+layout: false
+.left-column[
+  ## Demo: motor speed control 
+]
+.right-column[
+
+##TENSS Way: do it for real!
+<br>
+<br>
+<br>
+<br>
+<img class="right" src="./fig/motor-speed-example.png"/>
+
+]
+
+---
+template: inverse
+##.lgray[Feedback Control in Neuroscience<br>]
+
+---
+layout: false
+.left-column[
+  ## Feedback control in Neuroscience
+  ### Voltage clamp
+  
+]
+.right-column[
+
+__Feedback control to measure ionic conductances__
+
+- Membrane voltage non-linearly, and reciprocally coupled to ionic conductances
+- Feedback control cancels conductances to hold the voltage
+- Current required for cancellation is a measure of the ionic current at the voltage setpoint
+
+<img class="right" src="./fig/voltage-clamp-diagram.png"/>
+
+.footnote[
+  .red[1] Cole, K. S. _Dynamic electrical characteristics of the squid axon membrane._, Annu. Rev. Physiol., 1949 
+]
+
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control in Neuroscience
+  ### SWR Suppression
+  
+]
+.right-column[
+
+__Closed-loop hippocampal sharp wave-ripple suppression__
+
+.pull-left[
+__During Sleep__
+- Interferes with acquisition of spatial reference memory<sup>.red[1, 2]</sup>
+]
+
+.pull-right[
+__During Behavior__
+  - Interferes spatial working memory<sup>.red[3]</sup>
+]
+
+<img class="right" src="./fig/swr-supression.png"/ width="100%">
+
+.footnote[
+  .red[1] Girardeau G. et al. _Selective suppression of hippocampal ripples impairs spatial memory_, Nat. Neurosci., 2009.<br>
+  .red[2] Ego-Stengel V. & Wilson M.A. et al. _Disruption of ripple-associated hippocampal activity during rest impairs spatial learning in the rat_, Hippocampus, 2009.<br>
+  .red[3] Jadhav S.P. et al. _Awake hippocampal sharp-wave ripples support spatial memory_, Science, 2012.<br>
+  .red[*] Lacks an error signal, so not truly feedback control
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control in Neuroscience
+  ### LFP-phase dependent stimulation
+  
+]
+.right-column[
+
+__Optogenetic suppression of CA1 pyramidal cells at particular theta phases__<sup>.red[1]</sup>
+
+.pull-left[
+__Inhibit CA1 at theta peak__
+  - Only improves WM performance during encoding phase
+]
+
+.pull-right[
+__Inhibit CA1 at theta trough__
+  - Only improves WM performance during retrieval phase
+]
+
+<img class="right" src="./fig/siegle-phase-specific-stim.jpg"/ width="75%">
+<img class="right" src="./fig/siegle-phase-specific-stim-behavior.jpg"/ width="50%">
+
+
+.footnote[
+  .red[1] Siegle J.H. & Wilson. M.A. _Enhancement of encoding and retrieval functions through theta phase-specific manipulation of hippocampus_, eLife, 2014.<br>
+  .red[*] Lacks an error signal, so not truly feedback control
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control in Neuroscience
+  ### Artificial embodiment
+  
+]
+.right-column[
+
+__Feedback control to enforce learning rules in dissociated cortical networks.<sup>.red[1,2]</sup>__
+ 
+.pull-left[
+  <img class="right" src="./fig/animat.png"/> <br>
+  <img class="right" src="./vid/DougRat1st5DIV-FAST.gif" width="80%"/>
+]
+.pull-right[
+	<img class="right" src="./fig/animat-performance.png"/>
+]
+
+.footnote[
+  .red[1] DeMarse T.B. et al., _The Neurally Controlled Animat: Biological Brains Acting with Simulated Bodies_ Auton. Robots, 2001<br>
+  .red[2] Bakkum D.J. et al. _Spatio-temporal electrical stimuli shape behavior of an embodied cortical network in a goal-directed learning task_, J. Neural Eng., 2008<br>
+  .red[*] Video: Doug Bakkum, Potter Lab @ Georgia Tech
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Feedback control in Neuroscience
+  ### Artificial embodiment
+  
+]
+.right-column[
+
+__The Silent Barrage Project<sup>.red[1, *]</sup>__
+<br>
+<br>
+<br>
+<img class="right" src="./fig/fncir-06-00098-g009.jpg"/>
+
+.footnote[
+  .red[1] http://silentbarrage.com <br>
+  .red[*] Riley Zeller-Townson, Doug Bakkum, Guy Ben-Ary, Phil Gamblen, Peter Gee, Stephen Bobic, and Douglas Swehla
+]
+]
+
+---
+template: inverse
+##.lgray[Case study]<br>
+###.lgray[Optogenetic feedback control to study synaptic scaling]
+
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study
+]
+.right-column[
+
+__Upward synaptic scaling__
+
+- Dissociated cortical networks
+- 24 hour bath application of 
+  - TTX: Stop spiking
+  - CNQX: Stop AMPAergic neurotransmission
+- Measure miniature EPSCs
+- Synaptic strength of all excitatory synapses 'scales' in a homeostatic manner<sup>.red[1]</sup>
+<br>
+<br>
+<br>
+
+<img class="right" src="./fig/scaling-simple.png"/>
+
+.footnote[
+  .red[1] Turrigiano, G. et al. _Activity-dependent scaling of quantal amplitude in neocortical neurons_,  Nature, 1998<br>
+  .red[*] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study 
+]
+
+.right-column[
+
+__Upward synaptic scaling__
+
+<img class="right" src="./fig/scaling-distributions.jpg" width="90%"/>
+
+.footnote[
+  .red[*] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study
+]
+
+.right-column[
+
+__What triggers scaling?__
+
+- _Option 1:_ Reduced spiking → synaptic scaling<sup>.red[1, 2]</sup>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<img class="right" src="./fig/scaling-route-a.png"/>
+
+.footnote[
+  .red[1] Leslie, K. R., et al. _Postsynaptic depolarization scales quantal amplitude in cortical pyramidal neurons_ J. Neurosci., 2001 <br>
+  .red[2] Ibata, K ., et al., _Rapid synaptic scaling induced by changes in postsynaptic firing_  Neuron, 2008
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study
+]
+
+.right-column[
+
+__What triggers scaling?__
+
+- _Option 1:_ Reduced spiking → synaptic scaling
+- _Option 2:_ Reduced transmission → reduced spiking → synaptic scaling<sup>.red[1]</sup>
+<br>
+<br>
+<br>
+
+<img class="right" src="./fig/scaling-route-b.png"/>
+
+.footnote[
+  .red[1] Turrigiano, G. et al. _Activity-dependent scaling of quantal amplitude in neocortical neurons_,  Nature, 1998<br>
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study
+]
+
+.right-column[
+
+__What triggers scaling?__
+
+- _Option 1:_ Reduced spiking → synaptic scaling
+- _Option 2:_ Reduced transmission → reduced spiking → synaptic scaling
+- _Option 3:_ Reduced transmission → synaptic scaling <sup>.red[1, 2]</sup>
+
+<img class="right" src="./fig/scaling-route-c.png"/>
+
+.footnote[
+  .red[1] Burrone, J., et al. _Multiple forms of synaptic plasticity triggered by selective suppression of activity in individual neurons_ Nature, 2002<br>
+  .red[2] Wilhelm, J. C., & Wenner, P. _GABAA transmission is a critical step in the process of triggering homeostatic increases in quantal amplitude_ PNAS,  2008
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study
+]
+
+.right-column[
+
+__Oppotunity for feedback control__
+
+- _Option 1:_ Reduced spiking → synaptic scaling
+- _Option 2:_ Reduced transmission → reduced spiking → synaptic scaling
+- _Option 3:_ Reduced transmission → synaptic scaling <sup>.red[1,2 ]</sup>
+
+<img class="right" src="./fig/scaling-confound.png"/>
+
+]
+
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study
+  
+]
+.right-column[
+
+__Cultured cortical networks grown on MEAs__
+
+<img class="right" src="./fig/cortical-culture-cells-and-activity.png" width="90%"/>
+
+.footnote[
+	.red[*] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study
+  
+]
+.right-column[
+
+__Optogenetic feedback control to decouple neurotransmission and spiking__
+
+<img class="right" src="./fig/optoclamp-apparatus.jpg" width="50%"\>
+
+.footnote[
+  .red[1] J. Newman et al. _Closed-loop, multichannel experimentation using the open-source NeuroRighter electrophysiology platform_, Front. Neural Circuits, 2013<br>
+  .red[2] J. Newman et al. _Optogenetic feedback control of neural activity_, eLife, 2015<br>
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study
+  
+]
+.right-column[
+
+__Optogenetic feedback control to decouple neurotransmission and spiking__
+
+<img class="right" src="./fig/F11.large.jpg"/>
+
+.footnote[
+  .red[1] J. Newman et al. _Closed-loop, multichannel experimentation using the open-source NeuroRighter electrophysiology platform_, Front. Neural Circuits, 2013<br>
+  .red[2] J. Newman et al. _Optogenetic feedback control of neural activity_, eLife, 2015<br>
+]
+]
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study
+  
+]
+.right-column[
+
+__Optogenetic feedback control to decouple neurotransmission and spiking__
+
+<img class="right" src="./fig/optoclamp-scaling.jpg"/>
+
+.pull-left[
+.center-small[__Control burst__]
+<br>
+<img class="right" src="./vid/ca-control-burst.gif" width="80%"/>
+]
+.pull-right[
+.center-small[__Evoked burst with CNQX__]
+<br>
+<img class="right" src="./vid/ca-cnqx-evoked-burst.gif" width="80%"/>
+]
+
+.footnote[
+  .red[1] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015<br>
+  .red[2] J. Newman et al. _Closed-loop, multichannel experimentation using the open-source NeuroRighter electrophysiology platform_, Front. Neural Circuits, 2013<br>
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study
+  
+]
+.right-column[
+
+__Optogenetic feedback control to decouple neurotransmission and spiking__
+
+- Reduced neurotransmission causes upward synaptic scaling without a reduction in spiking activity
+
+<img class="right" src="./fig/ncomms7339-f7.jpg"/>
+
+
+.footnote[
+  .red[1] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015<br>
+]
+]
+
+ 
+---
+layout: false
+.left-column[
+  ## Future of feedback control in Neuroscience
+
+]
+.right-column[
+__ Control features of neural activity other than firing rate and LFP events__
+  - Temporal population firing patterns carry information
+  - Spatial light modulationto control specific ensembles
+  - Enforce ensemble activity patterns using model-predictive control
+  
+__Closed-loop systems for dynamics-finding and decoding__
+  - Real-time decoding of neural ensembles
+  - Real-time systems identification 
+  - High-bandwidth tools that are optimized for __direct__, __low overhead__ interaction with __GPU coprocessors__
+
+
+  <img class="right" src="./fig/pattern-controller.png" width="85%" />
+  
+.footnote[
+  .red[1] Grosenick, L. et al., _Closed-Loop and Activity-Guided Optogenetic Control_, Neuron, 2015<br>
+]
+]
+
+---
+template: inverse
+## End
+
+---
+layout: false
+## Acknowledgements
+
+.pull-left[
+
+### Advising
+__Steve M. Potter__<br>
+__Matthew Wilson__
+
+### Scaling project
+Peter Wenner (Emory University)<br>
+Ming-fai Fong (now in Mark Bear's lab @ MIT)
+
+### Neurorighter & robotic embodiment
+Riley Zeller-Townson (Georgia Tech)<br>
+Doug Bakkum (Georgia Tech)<br>
+Silent Barrage Team
+- Guy Ben-Ary
+- Phil Gamblen
+- Peter Gee
+- Stephen Bobic
+- Douglas Swehla
+]
+
+.pull-right[
+### MIT
+Francisco Flores<br>
+Greg Hale<br>
+Collyn Messier<br>
+Hector Penagos<br>
+Josh Siegle (now at Allen)<br>
+Carmen Varela<br>
+Jakob Voigts<br>
+Jennie Young
+
+### Funding
+- NSF STC award CCF-1231216 
+- NIH F32 MH107086-01
+- NIH grant 1R01NS079757-01
+- NSF COPN grant 1238097
+<br>
+<br>
+<img class="right" src="./fig/logo-group.png" width="100%"/>
+
+]
+
+---
+template: inverse
+
+##.lgray[Appendix 1: NeuroRighter]<br>
+
+---
+layout: false
+.left-column[
+  ## Neurorighter
+]
+.right-column[
+__Open-source multichannel data acquisition system__
+- Closed-loop recording, (MUXed) stimulation on all electrodes, and lots of
+auxiliary analog and digital IO
+- Semi low latency feedback (5-10 ms)
+- Extensible at runtime using plugin architecture
+- Low cost .red[*]
+
+<img class="right" src="./fig/fncir-06-00098-g001.jpg" width="55%"/>
+
+.footnote[
+.red[*] material cost < 10000 USD<BR>
+[repository link](https://github.com/rzellertownson/neurorighter)
+]
+
+]
+
+
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study
+  ### Implications
+  
+]
+.right-column[
+
+__Optogenetic feedback control to decouple neurotransmission and spiking__
+
+- Reduced neurotransmission causes upward synaptic scaling without a reduction in spiking activity
+
+- Homeostatic changes in synaptic strength may not preserve the relative weights of synapses
+  - Implications for memory formation and maintenance in the CNS
+
+.footnote[
+  .red[1] M-f. Fong et al. _Upward synaptic scaling is dependent on neurotransmission rather than spiking_, Nat. Commun., 2015<br>
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Synaptic scaling
+  ### Case study
+  ### Implications
+  
+]
+.right-column[
+
+__Abbarent homeostatic plasticity__
+
+- Deafferentation 
+   - Homeostatic increases in sensitivity of neural tissue lacking normal input
+   - Unstable  neural circuits prone to paroxysmal  avalanches of action potentials <sup>.red[1]</sup>
+- Many diseases may be associated with aberrant homeostatic plasticity
+  - Tinnitus <sup>.red[2]</sup>
+  - TBI-induced epilepsy <sup>.red[3, 4]</sup>
+  - Chronic pain
+  - Distonia (involuntary muscle contractions)
+  
+- _Drugs that seek to directly modulate scaling should likely aim at the synapse rather than trying to regulate activity levels._
+
+.footnote[
+  .red[1] I. Timofeev _Neocortical seizures: initiation, development and cessation_ Neurosci. 2004.<br>
+  .red[2] S. Yang et al. _Homeostatic plasticity drives tinnitus perception in an animal model_ PNAS, 2011.<br>
+  .red[3] J.F. Annegers et al. _A population-based study of seizures after traumatic brain injuries_ NEJM, 1998.<br>
+  .red[4] I. Timofeev et al. _Posttraumatic epilepsy: the roles of synaptic plasticity_ The Neuroscientist, 2010.
+]
+]
+---
+    </textarea>
+    <script src="./scripts/remark-latest.min.js">
+    <script>
+      var hljs = remark.highlighter.engine;
+    </script>
+    <script src="remark.language.js"></script>
+    <script>
+      var slideshow = remark.create({
+          highlightStyle: 'monokai',
+          highlightLanguage: 'remark',
+          highlightLines: true
+        }) ;
+    </script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-44561333-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script');
+        ga.src = 'https://ssl.google-analytics.com/ga.js';
+        var s = document.scripts[0];
+        s.parentNode.insertBefore(ga, s);
+      }());
+    </script>
+  </body>
+</html>
