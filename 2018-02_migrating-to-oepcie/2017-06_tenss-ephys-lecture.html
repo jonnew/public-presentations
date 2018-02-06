@@ -1,0 +1,1879 @@
+<!DOCTYPE html
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="remark,remarkjs,markdown,slideshow,presentation" />
+    <meta name="description" content="A simple, in-browser, markdown-driven slideshow tool." />
+    <title>Remark</title>
+    <style>
+      @font-face{
+        font-family: 'Droid Serif';
+        src: url('./fonts/DroidSerif.ttf');
+      }
+      @font-face{
+        font-family: 'Yanone Kaffeesatz';
+        src: url('./fonts/YanoneKaffeesatz-Regular.ttf');
+      }
+      @font-face{
+        font-family: 'Ubuntu Mono';
+        src: url('./fonts/UbuntuMono-Regular.ttf');
+      }
+
+      /* Colors */
+      .red    { color: #FF4943; }
+      .gray   { color: #787878; }
+	  .lgray   { color: #d9d9d9; }
+      .green  { color: #87A558; }
+      .blue   { color: #41C8F0; }
+      .yellow { color: #DBEC62; }
+
+      html, body { font-family: 'Droid Serif'; }
+      img.right { max-width: 100%; display: block; margin-left: auto; margin-right: auto; vertical-align: middle; }
+      h1, h2, h3 { font-family: 'Yanone Kaffeesatz'; font-weight: 400; margin-bottom: 0; }
+      blockquote { 
+        background: #f9f9f9; 
+        border-left: 10px solid #ccc; 
+        margin: 1.5em 10px; 
+        padding: 0.5em 10px; 
+        quotes: "\201C""\201D""\2018""\2019"; 
+      }
+      blockquote p { display: inline; }
+      li p { line-height: 1.25em; }
+      a, a > code { color: #FF4943; text-decoration: underline; }
+      code { background: #FFFFFF; border-radius: 5px; }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote { position: absolute; bottom: 3em; font-size: 0.7em; }
+      .small { font-size: 0.8em; }
+      .large { font-size: 2em; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left { float: left; width: 47%; }
+      .pull-right { float: right; width: 47%; }
+	  .image-middle { display: inline-block; height: 100%; vertical-align: middle; } 
+      .pull-right ~ p { clear: both;}
+	  .center-small { text-align: center; font-size: 0.7em; }
+
+      #slideshow .slide .content code { font-size: 0.8em; }
+      #slideshow .slide .content pre code { font-size: 0.9em; padding: 15px; }
+
+      .inverse { background: #272822; color: #777872; text-shadow: 0 0 20px #333; }
+      .inverse h1, .inverse h2 { color: #f3f3f3; line-height: 0.8em; }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote { bottom: 12px; left: 20px; font-size: 0.7em; }
+      #slide-how .slides { font-size: 0.9em; position: absolute; top:  151px; right: 140px; }
+      #slide-how .slides h3 { margin-top: 0.2em; }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first { background: #fff; position: absolute; top: 20%; left: 20%; z-index: 1; }
+      #slide-how .slides .second { position: relative; background: #fff; z-index: 0; }
+
+      /* Two-column layout */
+      .left-column { color: #777; width: 20%; height: 92%; float: left; }
+      .left-column h2:last-of-type, .left-column h3:last-child { color: #000; }
+      .right-column { width: 75%; float: right; padding-top: 1em; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+	
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+##.lgray[Extracellular electrophysiology basics<br>]
+
+### TENSS 2017
+
+2017 June <br> <br>
+
+Jon Newman<br>
+[homepage](http://www.mit.edu/~jpnewman/) | [github](https://github.com/jonnew) @jonnew <br>
+
+Jakob Voigts<br>
+[homepage](http://jvoigts.scripts.mit.edu/blog/) | [github](https://github.com/jvoigts) @jvoigts
+
+---
+template: inverse
+##.lgray[Aquiring single unit recordings with metal electrodes]
+
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrodes
+]
+.right-column[
+
+### Single unit recordings
+
+- In the 1950's and 60's David Hubel and Tornsten Wiesel used metal electrodes to isolate the spiking in single
+neurons and deduce basic receptive field properties of single neurons<sup>.red[1]</sup>
+<br>
+<br>
+- .red[__How did that work?__]
+
+.pull-left[
+<img class="right" src="./fig/ephys_general/hubel-experiment.jpg"/>
+]
+.pull-right[
+<img class="right" src="./fig/ephys_general/hubel-responses.jpg"/ width="80%">
+]
+
+.footnote[
+  .red[1] David Hubel and Tornsten Wiesel
+  <br>
+  _Receptive fields of single neurones in the cat's striate cortex_<br>
+]
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrodes
+]
+.right-column[
+
+### Tungsten microelectrode
+
+_Innovation_
+- Delicate glass micropipettes filled with melted indium
+- David Hubel: Tungsten microelectrode<sup>.red[1]</sup>
+
+_Procedure_
+.pull-left[
+1. Chemically sharpen (etch) tungsten wire 
+2. Coat all but the tip in insulator
+3. Amplify and monitor the electrode voltage in reference to a ground electrode.
+5. Lower electrode until evoked spikes are seen
+]
+
+.pull-right[
+<img class="right" src="./fig/ephys_general/tungsten-electrodes.png"/>
+]
+
+.footnote[
+  .red[1] David Hubel _Tungsten Microelectrode for Recording from Single Units_ <br>
+]
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrodes
+]
+.right-column[
+
+### Why tungsten?
+
+- Because steel didn't work... :).<br><br>
+- So, will __any__ bio-compatible metal do the job? 
+  - .red[Yup, but why?...]
+
+.pull-left[
+<blockquote>
+... Since steel wire becomes too fragile near the tip when thus sharpened and
+also requires too thick a shaft, tungsten was selected as by far the stiffest,
+easily available metal.<sup>.red[1]</sup>
+</blockquote>
+]
+.pull-right[
+<img class="right" src="./fig/ephys_general/tungsten-electrodes.png"/>
+]
+<br>
+
+.footnote[
+  .red[1] David Hubel _Tungsten Microelectrode for Recording from Single Units_ <br>
+]
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### Model
+]
+.right-column[
+
+### Players: neuron + electrode + amplifier
+
+<img class="right" src="./fig/ephys_general/extracellular-metal-electrode.png" width="80%"/>
+- ___V<sub>ec</sub>___ : local extracellular voltage (isopotential line) against CSF reference
+- ___V<sub>in</sub>___ : voltage at input to high impedance terminal of amplifier
+- ___V<sub>out</sub>___: amplifier voltage output
+- ___Z<sub>in</sub>___ : Amplifier input impedance
+<br>
+<br>
+
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### Model
+]
+.right-column[
+
+### Amplifier
+
+<img class="right" src="./fig/ephys_general/extracellular-metal-electrode.png" width="80%"/>
+
+__Goal:__ Find the relationship between ___V<sub>in</sub>___ and ___V<sub>out</sub>___
+- ___Z<sub>in</sub>___ : Amplifier input impedance
+  - 10's to 100's of Megaohms in the relevant frequency range 
+  - Can be treated as infinite (omitted)
+- For relevant bandwidth, ___V<sub>out</sub>___ ~ ___K * V<sub>in</sub>___ 
+
+- OK, great... .red[so what is ___V<sub>in</sub>___?]
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### Model
+]
+.right-column[
+
+### Electrode Model
+
+<img class="right" src="./fig/ephys_general/extracellular-metal-electrode-equiv-circuit.png" width="80%"/>
+
+- ___C<sub>e</sub>___ : electrode tip capacitance
+- ___R<sub>e</sub>___ : electrode tip resistance
+- ___C<sub>s</sub>___ : electrode wire shunt capacitance
+- ___R<sub>s</sub>___ : electrode wire resistance
+
+__Goal:__ Find the relationship between ___V<sub>ec</sub>___ and ___V<sub>in</sub>___
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### Model
+]
+.right-column[
+
+### ___R<sub>s</sub>___ : DC Resistance of metal wire
+
+<img class="right" src="./fig/ephys_general/extracellular-metal-electrode-equiv-circuit-rs.png" width="80%"/>
+
+- ___R<sub>s</sub>___ = (resistivity * length) / cross sectional area
+  - resistivity ~ 5.6e-8 ohm / meter (Tungsten)
+  - length ~ 0.02 m
+  - area ~ 8e-11 m<sup>2</sup> (10 um diameter)
+<br><br>
+- ___R<sub>s</sub>___ ~ 10 to 100 Ohms
+- So low that we can treat as a short circuit.
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### Model
+]
+.right-column[
+
+### ___C<sub>s</sub>___ : Amplifier input shunt capacitance
+
+<img class="right" src="./fig/ephys_general/extracellular-metal-electrode-equiv-circuit-cs.png" width="80%"/>
+
+Two contributers:
+1. Amplifier input capacitance 
+  - ~10 pF typical
+2. Capacitance of insluated portion of electrode
+  - Geometry of conductor and insulator
+  - Dialectic constant of insulator
+  - Depth into tissue
+  - ~50 to 100 pF typical
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### Model
+]
+.right-column[
+### ___C<sub>e</sub>___ : Electrode tip capacitance
+
+<img class="right" src="./fig/ephys_general/extracellular-metal-electrode-equiv-circuit-ce.png" width="80%"/>
+
+.pull-left[
+- H<sub>2</sub>O adsorbs onto surface, forming insulating layer
+- Electric gradient causes layer of opposing charged ions on the H20 layer.
+]
+.pull-right[
+<img class="right" src="./fig/ephys_general/EDLC-simplified-principle.png" width="100%"/>
+
+]
+<br>
+- Electrode tip is _literally_ an electrolytic capacitor.
+  - ___C<sub>e</sub>___ ~ 0.2 pF / um<sup>2</sup> ~ 10 - 20 pF (unplated)
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### Model
+]
+.right-column[
+### ___R<sub>e</sub>___ : Electrode tip resistance
+
+<img class="right" src="./fig/ephys_general/extracellular-metal-electrode-equiv-circuit-re.png" width="80%"/>
+
+- Shortly after immersion, net flow of change to/from electrode is 0.
+- This equilibrium can be disrupted due to applied voltage
+- The tip resistance is the relationship between this voltage change and resulting current into electrode
+- ___R<sub>e</sub>___ ~ 10 to 100 MOhm 
+  - Equivalent to the leakage of  ___C<sub>e</sub>___. 
+  - Large value, can ignore.
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### Model
+]
+.right-column[
+### Essential electrode circuit
+
+<img class="right" src="./fig/ephys_general/extracellular-metal-electrode-equiv-circuit-all-caps.png" width="80%"/>
+
+Capacitive reactance (impedance): `\(X_C = \frac{1}{2\pi fC}\)`
+  - APs and LFPs are AC signals!
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### Model
+]
+.right-column[
+### Impedance
+
+- Action pontentials and LFPs are time-varying (AC) voltage signals
+    - DC to 2000 Hz or so
+- __Impedance__ 
+    - Generalization of resistance
+    - Describes the relationship between voltage and current for _time-varying_
+    signals
+    - Provides both __amplitude__ and __phase__ relationship between V and I
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### Model
+]
+.right-column[
+### Impedance
+
+.pull-left[
+
+<img class="right" src="./fig/ephys_general/resistance.png" width="80%"/>
+
+`\(R = I/V\)` = 0.5A / 1 V 
+<br>
+`\(R = I/V\)` = 2 Ω
+
+]
+
+.pull-right[
+
+<img class="right" src="./fig/ephys_general/impedance.png" width="92%"/>
+
+
+ `\(f = 10\)` Hz
+<br>
+<br>
+ `\(\lvert(Z(f)\rvert)  = I/V\)`
+ `\(\lvert(Z(f)\rvert)  = 2 \Omega\)`
+<br>
+<br>
+ ∠ = 45 deg.
+<br>
+<br>
+ `\(Z(f)  = 2 \Omega, 45 deg.\)`
+
+]
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### Model
+]
+.right-column[
+### Essential electrode circuit
+
+<img class="right" src="./fig/ephys_general/extracellular-metal-electrode-equiv-circuit-just-impedances.png" width="80%"/>
+
+- The circuit is a capacitive voltage divider: 
+<br>
+<br>
+`\(V_{in} = V_{
+      ec
+    } \frac{Z_{Cs}} {Z_{Cs} + Z_{Ce}} = V_ {
+      ec
+    }
+    \frac{1} {
+      1 + { C_s \over C_e }
+    }\)`
+
+- Note that as `\(C_e \rightarrow \infty\)`,  
+<br>
+`\(Z_{Ce} \rightarrow 0\)`,  
+`\(V_{in} \rightarrow V_{ec}\)`
+<br>
+- So bigger `\(C_e\)` →  less attenuated extracellular voltage at amplifier's input 
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### Model
+]
+.right-column[
+### Essential electrode circuit
+
+<img class="right" src="./fig/ephys_general/extracellular-metal-electrode-equiv-circuit-just-impedances.png" width="80%"/>
+
+- The circuit is a capacitive voltage divider: 
+<br>
+<br>
+`\(V_{in} = V_{ec} \frac{Z_{Cs}}{Z_{Cs} + Z_{Ce}} = V_{ec} \frac{1}{1 + {C_s \over C_e}}\)`
+
+- So, finally, .red[what is the relationship between V<sub>ec</sub> and V<sub>in</sub>?]
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### Model
+]
+.right-column[
+### Essential electrode circuit
+
+<img class="right" src="./fig/ephys_general/extracellular-metal-electrode-equiv-circuit-just-impedances.png" width="80%"/>
+
+- The final transformation from V<sub>ec</sub> to V<sub>out</sub> (omitting
+noise and the fact that this is a very primitive model):
+<br>
+<br>
+`\(V_{out} \approx K * V_{in}\)`
+<br>
+`\(V_{out} \approx K * V_{ec} \left(\frac{1}{1 + {C_s \over C_e}}\right)\)`
+
+- And, we wish to make C<sub>e</sub> as large as possible!! 
+  - .red[How to we increase C<sub>e</sub>?]
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### Plating
+]
+.right-column[
+
+### Electrode plating to increase ___C<sub>e</sub>___
+
+.pull-right[
+<img class="right" src="./fig/ephys_general/copper-electroplating.png" width="100%"/>
+]
+.pull-left[
+<br>
+- Copper anode
+  - Copper ions associate with acid anions to form coper sulfate
+- Metal Cathode 
+  - Copper sulfate reduces to copper by gaining electrons at cathode
+
+  ]
+
+<br>
+<br>
+Thin layer of anode material forms on the cathode
+
+.footnote[
+  .red[Image] https://en.wikipedia.org/wiki/Electroplating<br>
+]
+]
+
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### Plating
+]
+.right-column[
+### Electrode plating to increase ___C<sub>e</sub>___
+
+<img class="right" src="./fig/ephys_general/plating.png" width="60%"/>
+
+- Inert anode (e.g. Carbon)
+- Solution containing dissolved gold
+- DC current → spongy deposition of gold 
+    - Large increase in surface area 
+    - Reduction in tip impedance by 1 or 2 orders of magnitude
+
+.footnote[
+  .red[Image] S.A. Desai et al. Front. Neuroeng., 06 May 2010
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### Plating
+]
+.right-column[
+
+### Electrode plating to increase ___C<sub>e</sub>___
+
+<img class="right" src="./fig/ephys_general/extracellular-metal-electrode-equiv-circuit-just-impedances.png" width="60%"/>
+
+- For NiChrome microwires, tip impedance is reduced to ~500 to 200 kΩ @ 1kHz
+    - ___C<sub>e</sub>___ ~ 300 pF to 800 pF
+
+- In this case
+<br>
+`\(V_{out} \approx K * V_{ec} \left(\frac{1}{1 + {100 \over 500}}\right)\)`
+<br>
+<br>
+`\(V_{out} \approx K * 0.8 * V_{ec}\)`
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### Plating
+]
+.right-column[
+
+### Added benefits of plating
+
+<img class="right" src="./fig/ephys_general/plating.png" width="60%"/>
+
+- Improves biocompatibility
+    - Plating in inert metal (e.g. gold) 
+- Reduction in thermal noise
+<br>
+<br>
+`\(V_{noise\_therm} = \sqrt {4 k_B T R \Delta f}\)`
+<br>
+<br>
+`\(k_B\)` : Boltzmann's constant
+<br>
+`\(T\)` : Temperature
+<br>
+`\(R\)` : Resistant (Impedance)
+<br>
+`\(\Delta f\)` : Bandwidth in Hertz
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### ...Tangent
+]
+.right-column[
+
+### While we are talking about noise...
+
+<img class="right" src="./fig/ephys_general/faraday-example.jpg" width="70%"/>
+
+- .red[Why do people surround their recording rigs in tin foil or wire mesh?]
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Metal electrode
+  ### ...Tangent
+]
+.right-column[
+
+### Faraday cage
+
+<img class="right" src="./fig/ephys_general/Faraday_cage.gif" width="100%"/>
+
+- External electric field
+- Electrons in metal redistribute
+    - Left becomes net negative
+    - Right is relatively positive
+<br>
+<br>
+- Within the cage: induced field cancels the external one.
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Signal conversion
+]
+.right-column[
+
+### Signal processing and conversion
+
+<img class="right" src="./fig/ephys_general/amp-and-dig.png" width="100%"/>
+
+1. Amplify/filter weak signals
+
+2. Convert amplified signals into digital values
+    - Sample signal amplitude at discrete time points
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Signal conversion
+  ### Amplification
+]
+.right-column[
+
+### Purpose of amplification
+
+<img class="right" src="./fig/ephys_general/amp-and-dig_amp-circled.png" width="100%"/>
+
+1. Amplify weak signals
+
+2. Convert amplified signals into digital values
+    - Sample signal amplitude at discrete time points
+
+- .red[Why do we amplify/filter neural signals?]
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Signal conversion
+  ### Amplification
+]
+.right-column[
+
+### Purpose of amplification and filtering
+
+<img class="right" src="./fig/ephys_general/extracellular-metal-electrode-equiv-circuit.png" width="60%"/>
+
+1. Common mode noise rejection
+    - Referencing
+  
+2. Decrease singal bandwidth 
+   - Increase (apparent) SNR by rejecting unwanted frequencies
+   - Anti-aliasing
+   
+3. Impedance transformation
+
+4. Fit dynamic range of A/D converters
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Signal conversion
+  ### Amplification
+]
+.right-column[
+
+### Common mode noise rejection
+
+<img class="right" src="./fig/ephys_general/common-mode-rejection.png" width="100%"/>
+
+- Differential amplifier
+  - Amplify difference between two input voltages
+  - Suppress "common mode" voltage
+
+- Common mode signals: 
+  - Motion artifacts
+  - Non-local fields
+  
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Signal conversion
+  ### Amplification
+]
+.right-column[
+
+### Filtering
+
+<img class="right" src="./fig/ephys_general/filter-types.gif" width="70%"/>
+
+- Filtering is used to reject signals in certain frequency bands
+    - Bandpass between 0.5 and 2 kHz
+    - Implemented in the amplifier circuit
+    - Or, digitally in software
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Signal conversion
+  ### Amplification
+]
+.right-column[
+
+### Filtering
+
+<img class="right" src="./fig/ephys_general/filter-types.gif" width="70%"/>
+
+- Noise sources can be wideband
+  - Thermal noise "White"
+    - Electromagnetic interference
+    - Switching power supply residue 
+- Or, DC
+    - Voltage offsets
+- Or, narrow-band
+    - 50 Hz line noise
+<br>
+<br>
+- Bandpass filtering is used to reject unwanted signals 
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Signal conversion
+  ### Amplification
+]
+.right-column[
+
+### Anti-aliasing filter
+
+.pull-left[
+- Before digital sampling, we __must__ low pass filter our signals
+<br>
+- Anti-aliasing filter
+  - Reduce signal power in frequencies over the Nyquist limit
+    - Prevent __aliasing__ during A/D conversion
+]
+.pull-right[
+<img class="right" src="./fig/ephys_general/aliasing.png" width="100%"/>
+<img class="right" src="./fig/ephys_general/aliasing-bricks.jpg" width="100%"/>
+]
+
+  
+]
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Signal conversion
+  ### Amplification
+]
+.right-column[
+
+### Impedance transformation
+
+<img class="right" src="./fig/ephys_general/op-amp.png" width="100%"/>
+
+- Input impedance is very high
+  - Can be driven by weak current sources (like neurons)
+  
+- Output impedance of a differential amplifier is very low
+  - Can drive cabling and digitizers without interference
+  
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Signal conversion
+  ### Amplification
+]
+.right-column[
+
+### Match digitizer dynamic range
+
+<img class="right" src="./fig/ephys_general/adc-input-scaling.png" width="100%"/>
+
+- Match the dynamic range of our digitizer
+  - Digitizer input range = [-1 +1] V
+  - Output of amplifier should match this
+  
+]
+
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Signal conversion
+  ### Amplification
+  ### Digitization
+]
+.right-column[
+
+### Purpose of digitization
+
+<img class="right" src="./fig/ephys_general/amp-and-dig_dig-circled.png" width="100%"/>
+
+1. Amplify weak signals
+
+2. Convert amplified signals into digital values
+- .red[Why do we digitize neural signals?]
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Signal conversion
+  ### Amplification
+  ### Digitization
+]
+.right-column[
+
+### Purpose of digitization
+
+<img class="right" src="./fig/ephys_general/amp-and-dig_dig-circled.png" width="100%"/>
+
+1. Amplify weak signals
+
+2. Convert amplified signals into digital values
+- .red[Why do we digitize neural signals?]
+
+  - Digital processing
+  - Digital storage
+  
+- .red[How do we digitize neural signals?]
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Signal conversion
+  ### Amplification
+]
+.right-column[
+
+### 2-bit vs. 3-bit resolution
+
+
+.pull-left[
+- 2 vs. 3 bit resolution
+    - 2<sup>2</sup> = 4 levels
+    - 2<sup>3</sup> = 8 different levels
+]
+
+.pull-right[
+<img class="right" src="./fig/ephys_general/resolution.png" width="100%"/>
+]
+  
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Signal conversion
+  ### Amplification
+  ### Digitization
+]
+.right-column[
+
+### Important digitizer characteristics
+
+.pull-left[
+- Resolution
+  - Typical:12 to 16 bit
+  - 4096 to 65536 discrete values
+
+  
+- Dynamic range
+  - Should match maximum signal
+  - Too small:
+    - Saturation
+  - Too large
+    - Decreased effective resolution.
+]
+
+.pull-right[
+<img class="right" src="./fig/ephys_general/resolution.png" width="100%"/>
+]
+
+]
+
+---
+layout: false
+.left-column[
+  ## Single unit ephys
+  ### Signal conversion
+  ### Amplification
+  ### Digitization
+  ### Modern options
+]
+.right-column[
+
+### Miniaturized amplification and digitization
+
+<img class="right" src="./fig/ephys_general/intan-block-diagram.png" width="90%"/>
+
+- 16 bit with 10 mV dynamic range
+- 0.15 uV / bit (overkill!!!)
+
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### types of signals
+]
+.right-column[
+
+So how do we get from recording (extracellular) data to knowing what is happening in the brain?
+<img class="right" src="./fig/drives/ringo_data.png" width="100%"/>
+What we have is voltage, from electrodes, over time.
+We typically do ~30KHz, we typically keep data at ~1-6000Hz 
+(One spike is going to be over in ~32 samples)
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### types of signals
+]
+.right-column[
+
+What is in this voltage trace?
+<img class="right" src="./fig/drives/large_raw_trace.png" width="100%"/>
+]
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### types of signals
+]
+.right-column[
+<img class="right" src="./fig/drives/electrode_distances.png" width="100%"/>
+]
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### types of signals
+]
+.right-column[
+<img class="right" src="./fig/drives/electrode_distances_b.png" width="100%"/>
+]
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### types of signals
+]
+.right-column[
+<img class="right" src="./fig/drives/electrode_distances_c.png" width="100%"/>
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### types of signals
+]
+.right-column[
+<img class="right" src="./fig/drives/electrode_distances_d.png" width="100%"/>
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### types of signals
+]
+.right-column[
+<img class="right" src="./fig/drives/electrode_distances_e.png" width="100%"/>
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### types of signals
+]
+.right-column[
+
+What is in this voltage trace?
+<img class="right" src="./fig/drives/large_raw_trace.png" width="100%"/>
+
+- nearby neurons -> ___MUA___
+- far away neurons and stuff (maybe)  -> ___LFP___
+- anything else?
+
+]
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### types of signals
+]
+.right-column[
+
+Start by spitting off LFP from higher freq. data.
+<img class="right" src="./fig/drives/koehr_lfp_mua.jpg" width="100%"/>
+]
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### types of signals
+]
+.right-column[
+
+Now try to get at _when_ nearby cells spike
+<img class="right" src="./fig/drives/mua_trace.png" width="100%"/>
+
+Now we know two things:
+
+- the average of the electric field generated by neural activity (and a lot of other sources) near each electrode.
+
+- The times cells _very_ close to the electrode are spiking.
+
+- ___ how many neurons are close enough to a electrode to show up?___
+]
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### types of signals
+]
+.right-column[
+
+<img class="right" src="./fig/drives/tetrode_range_simple.jpg" width="100%"/>
+
+there are 'a couple' very close ones
+how can we identify them?
+
+]
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### types of signals
+]
+.right-column[
+
+<img class="right" src="./fig/drives/wfs.png" width="100%"/>
+
+there are 'a couple' very close ones
+how can we identify them?
+
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### types of signals
+]
+.right-column[
+
+We can use >1, typically 2 or 4 contacts to 'triangulate' cells
+<img class="right" src="./fig/drives/tetrode.png" width="100%"/>
+
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### types of signals
+]
+.right-column[
+
+<img class="right" src="./fig/drives/tetrode_range.jpg" width="100%"/>
+
+]
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### types of signals
+]
+.right-column[
+<img class="right" src="./fig/drives/tetrode_traces.png" width="100%"/>
+]
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### types of signals
+]
+.right-column[
+
+<img class="right" src="./fig/drives/HippocampalTetrodeExample.png" width="100%"/>
+<img class="right" src="./fig/drives/cluster_example.png" width="100%"/>
+
+]
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### types of signals
+]
+.right-column[
+
+This leaves us with 2 main signals:
+- LFP 
+- spikes (MUA, and once sorted, 'single units')
+
+practically, in open ephys, this will looks something like this:
+<img class="right" src="./fig/ephys_general/signalchain.png" width="100%"/>
+
+We'll see all of this in practice
+]
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+]
+.right-column[
+
+Unit yield and even within session/day stability declines significantly over time
+
+<img class="right" src="./fig/drives/dickey_et_al_09.png" width="80%"/>
+(Dickey et al. 09)
+
+__why?__
+
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Get around the immune system
+]
+.right-column[
+
+ Immune system reactions to electrodes are the main limiting factor.
+<img class="right" src="./fig/drives/turner_et_al_99.png" width="40%"/>
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Get around the immune system
+]
+.right-column[
+
+This response is somwhat binary, very small differences can be the deciding factor
+
+<img class="right" src="./fig/drives/rouche_norman_98.png" width="90%"/>
+Two electrode tracks from one static array, Rouche & Norman 1998
+
+]
+
+
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Get around the immune system
+]
+.right-column[
+
+After initial acute response, the glial scar tissue sheet eventually consolidates into a relatively thin layer.
+
+<img class="right" src="./fig/drives/glial_sheet.png" width="100%"/>
+(Polikov et al. 05)
+
+-> we can just poke out from the scar tissue region
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Drives
+]
+.right-column[
+
+ Very small adjustment of tetrodes ~50um are enough to get out of scar tissue
+
+<img class="right" src="./fig/drives/flexdrive_adjustments.png" width="100%"/>
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Drives
+]
+.right-column[
+
+Gratuitous data example:
+
+<img class="right" src="./fig/drives/flexdrive_long_term_stability.png" width="100%"/>
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Drives
+]
+.right-column[
+
+Use a screw to adjust tetrodes, mevchanism doesnt really matter, but there are common approaches.
+For small adjustments, think of it as a very weak spring that gets pushed on one end and then slowly moves trough tissue until the tension is gone.
+
+<img class="right" src="./fig/drives/flexdrive_mechanism.png" width="100%"/>
+]
+
+
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Drives
+]
+.right-column[
+
+
+<img class="right" src="./fig/drives/drivebottom.png" width="100%"/>
+(Flexdrive)
+
+]
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Drives
+]
+.right-column[
+
+
+<img class="right" src="./fig/drives/halodrive_bottom.JPG" width="100%"/>
+(Neuralynx Halodrive)
+
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Drives
+]
+.right-column[
+
+Many solutions available - fairly easy to customize & adapt
+
+<img class="right" src="./fig/drives/halodrive.png" width="60%"/>
+(Neuralynx Halodrive)
+]
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Drives
+]
+.right-column[
+
+Many solutions available - fairly easy to customize & adapt
+
+<img class="right" src="./fig/drives/halodrive_tenss_annotated.JPG" width="100%"/>
+(Neuralynx Halodrive after TENSS happened)
+]
+
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Drives
+]
+.right-column[
+
+Expected unit yield in S1
+
+<img class="right" src="./fig/drives/n_units.png" width="100%"/>
+]
+
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Drives
+]
+.right-column[
+
+There are many other nice properties of drives:
+- target structures
+- record from L2/3
+- generally, knowledge of depth in cortex
+- hit CA1 at all
+- enter brain one trode at a time
+
+<img class="right" src="./fig/drives/flexdrive_targeting_fig.png" width="100%"/>
+]
+
+
+
+
+
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Drives
+]
+.right-column[
+
+
+<img class="right" src="./fig/drives/targeting_big.png" width="100%"/>
+]
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Drives
+]
+.right-column[
+
+How do we know where an electrode is in the brain?
+
+depth wise
+- depth in cortex
+- hippocampus/ CA1
+- MEC
+
+laterally
+- retinotopy
+- somatotopy
+- modality
+
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Drives
+]
+.right-column[
+
+How do we know where an electrode is in the brain?
+<img class="right" src="./fig/drives/ep_inversion_example.png" width="100%"/>
+
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### how do we turn this into an implant?
+
+]
+.right-column[
+
+<img class="right" src="./fig/ephys_general/mouse.jpg"  width="50%"/>
+
+Constraints: Need to maintain mouse happiness, enable all activities in home cage and perform task.
+
+.pull-left[
+__Home cage__
+- Enrichment
+- other mice
+- longevity?
+
+<img class="right" src="./fig/ephys_general/mouse_cage.jpg" width="70%"/>
+]
+
+.pull-right[
+__Task__:
+wide spectrum from social interaction etc..
+
+<img class="right" src="./fig/ephys_general/mouse_social.jpg" width="80%"/> 
+ ..to head-fixed. <img class="right" src="./fig/ephys_general/mouse_headfixed.png" width="80%"/>
+]
+
+]
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Weight
+]
+.right-column[
+
+__Weight is a major constraint__
+- ~2g for mice, ~1.5g for songbirds, more for rats.
+- depends on behaviour.
+
+
+<img class="right" src="./fig/drives/drive_weight.png" width="100%"/>
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Weight
+]
+.right-column[
+
+__ Keep a low CG __
+
+For instance, leep headstages flat not upright, and angle lateral (e.g. A1) implants inwards
+
+
+<img class="right" src="./fig/drives/tilted_flexdrive.jpg" width="40%"/>
+
+__ Remove part of implant when not in task __
+
+Headstages etc.
+
+__ Use headpost, or at least support weight with tether __
+
+Requires adjustment of task design.
+]
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Stability
+]
+.right-column[
+
+ Keep implant on mouse 
+
+Sterile surgery, proper use of glues, skull screws.
+
+<img class="right" src="./fig/surgery/surgery_skull_screws.jpg" width="40%"/>
+
+Create additional surface area via lateral muscle resection:
+
+<img class="right" src="./fig/surgery/lateral_muscle_resection.png" width="100%"/>
+
+
+]
+
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Grounding / referencing
+]
+.right-column[
+
+The ground is the one electrode you _really_ need
+
+Requirements: Low impedance, global reference for noise rejection. Needs to stay this way (blood, regrowth)
+
+<img class="right" src="./fig/surgery/surgery_skull_screws.jpg" width="40%"/>
+
+Depending on application, understand how local the reference/ground should be.
+
+<img class="right" src="./fig/ephys_general/gnd_ref.png" width="100%"/>
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Grounding / referencing
+]
+.right-column[
+
+Depending on application, understand how local the reference/ground should be.
+
+<img class="right" src="./fig/ephys_general/gnd_ref.png" width="100%"/>
+
+___ Whats the main issue we're trying to solve, and what's the trade-off? ___
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Grounding / shielding
+]
+.right-column[
+
+<img class="right" src="./fig/drives/drive_shielding.png" width="100%"/>
+
+The shield needs to keep EM fields away from the electrode, as far up to the amp as possible.
+
+(Connections to skin/muscle are dangerous!) 
+]
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Grounding / shielding
+]
+.right-column[
+
+<img class="right" src="./fig/drives/closeby_dac.png" width="100%"/>
+
+The configuration of the amp/dac matters for this.
+
+]
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Grounding / shielding
+]
+.right-column[
+
+<img class="right" src="./fig/drives/surgery_overview.png" width="90%"/>
+
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Get access to the brain
+]
+.right-column[
+
+- Sterile surgery, immediate recovery etc.
+- Wound margin & healing
+- How do we get into the brain (and stay there)?
+
+There are at least two things in our way:
+
+- Skull
+- Dura
+
+<img class="right" src="./fig/surgery/drilling.png" width="100%"/>
+
+]
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Get access to the brain
+]
+.right-column[
+
+Drill Craniotomy
+
+<img class="right" src="./fig/surgery/surgery_acute_headpost.jpg" width="100%"/>
+]
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Get access to the brain
+]
+.right-column[
+
+Drill Craniotomy
+
+<img class="right" src="./fig/surgery/surgery_acute_headpost_b.jpg" width="100%"/>
+]
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Get access to the brain
+]
+.right-column[
+
+Drill Craniotomy
+
+<img class="right" src="./fig/surgery/surgery_nta13_drive_loc_a.jpg" width="100%"/>
+]
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Get access to the brain
+]
+.right-column[
+
+Durotomy
+(keep brain under saline/acsf at all times)
+
+<img class="right" src="./fig/surgery/surgery_nta13_drive_loc_b.jpg" width="100%"/>
+]
+
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Get access to the brain
+]
+.right-column[
+
+Drive insertion
+
+<img class="right" src="./fig/surgery/surgery_nta13_drive_loc_c.jpg" width="100%"/>
+
+Bleeding, and all inflammatory processes during the surgery can affect tissure reaction to electrodes!
+
+Waiting >2 days before lowering seems to be useful for stability.
+]
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Get creative
+]
+.right-column[
+
+Design challenge: Imagine you need 
+
+- _simultaneous_ MUA/ideally also units, bilaterally from >4 sites per hemisphere distributed all over cortex, including, visual, somatosensory, and frontal/motor areas
+
+- During free behaviour
+
+- For 1 week of recording
+]
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+  ### Get creative
+]
+.right-column[
+
+<img class="right" src="./fig/surgery/spidermouse_data.png" width="50%"/>
+<img class="right" src="./fig/surgery/spidermouse_data_b.png" width="100%"/>
+Have respect for the animal, not for traditional approaches.
+
+]
+
+
+
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+]
+.right-column[
+
+<img class="right" src="./fig/surgery/surgery_spidermouse_ferrules_b.jpg" width="100%"/>
+
+]
+
+---
+layout: false
+.left-column[
+  ## Practical challenges & Solutions
+]
+.right-column[
+
+<img class="right" src="./fig/surgery/surgery_spidermouse_ferrules_b_closeup.jpg" width="100%"/>
+Burr hole, find/make small crack, insert tetrode.
+
+We did not need many units, maybe even MUA was ok, and for ~1-2 weeks max.
+
+]
+
+
+
+
+---
+    </textarea>
+    <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
+    <script type="text/javascript">
+      var slideshow = remark.create();
+
+      // Setup MathJax
+      MathJax.Hub.Config({
+          tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          }
+      });
+
+      MathJax.Hub.Configured();
+    </script>
+  </body>
+</html>
+
