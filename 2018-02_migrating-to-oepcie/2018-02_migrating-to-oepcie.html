@@ -30,12 +30,12 @@
       html, body { font-family: 'Droid Serif'; }
       img.right { max-width: 100%; display: block; margin-left: auto; margin-right: auto; vertical-align: middle; }
       h1, h2, h3 { font-family: 'Yanone Kaffeesatz'; font-weight: 400; margin-bottom: 0; }
-      blockquote { 
-        background: #f9f9f9; 
-        border-left: 10px solid #ccc; 
-        margin: 1.5em 10px; 
-        padding: 0.5em 10px; 
-        quotes: "\201C""\201D""\2018""\2019"; 
+      blockquote {
+        background: #f9f9f9;
+        border-left: 10px solid #ccc;
+        margin: 1.5em 10px;
+        padding: 0.5em 10px;
+        quotes: "\201C""\201D""\2018""\2019";
       }
       blockquote p { display: inline; }
       li p { line-height: 1.25em; }
@@ -51,7 +51,11 @@
       .remark-code-line-highlighted     { background-color: #373832; }
       .pull-left { float: left; width: 47%; }
       .pull-right { float: right; width: 47%; }
-	  .image-middle { display: inline-block; height: 100%; vertical-align: middle; } 
+      .pull-left-big { float: left; width: 62%; }
+      .pull-right-small { float: right; width: 32%; }
+      .pull-left-small { float: left; width: 32%; }
+      .pull-right-big { float: right; width: 62%; }
+	  .image-middle { display: inline-block; height: 100%; vertical-align: middle; }
       .pull-right ~ p { clear: both;}
 	  .center-small { text-align: center; font-size: 0.7em; }
 
@@ -93,36 +97,70 @@ class: center, middle, inverse
 
 2018 Feb @ MWL<br> <br>
 
-Jon Newman<br>
-[homepage](http://www.mit.edu/~jpnewman/) | [github](https://github.com/jonnew) @jonnew <br>
+Jon Newman @jonnew<br>
+[homepage](http://www.mit.edu/~jpnewman/) | [github](https://github.com/jonnew)<br>
 
 Project Links<br>
-[homepage](https://jonnew.github.io/open-ephys-pcie) | [github](https://github.com/jonnew/open-ephys-pcie)
+[homepage](https://jonnew.github.io/open-ephys-pcie) | [github](https://github.com/jonnew/open-ephys-pcie) | [BOM](https://docs.google.com/spreadsheets/d/1F-KWcdvH_63iXjZf0cgCfDiFX6XXW3qw6rlR8DZrFpQ/edit?usp=sharing)
 
 ---
 layout: false
 .left-column[
   ## Citation Needed
+  ### Referencing this work
 ]
 .right-column[
 
-    - __Both__ of the following should be included in __any paper or
-    presentation__ that makes use of this technology:
+<img class="right" src="./fig/citation-needed.png" width="50%"/>
 
-    1. Repository Link:
-        - Hyperlink footnote .red[<sup>1</sup>] in presentation
-        - Parentheical URL in papers (https://github.com/jonnew/open-ephys-pcie)
-    2. Paper Citation:
-        - 
-        - Bioarxiv Paper scheduled for March 2018
-        - "Real" paper to follow
+- This presentation encapsulates about 2 years of effort
+- Open Ephys is a __non profit__
+- Please include __both__ of the following in __any paper or
+presentation__ that makes use of this technology:
+
+1. Repository Link:
+    - Hyperlink footnote .red[<sup>1</sup>] in presentation
+    - Parenthetical URL in papers (https://github.com/jonnew/open-ephys-pcie)
+2. Paper Citation:
+    - Bioarxiv Paper scheduled for March 2018
+    - "Real" paper to follow
 
 .footnote[
-  .red[1] https://github.com/jonnew/open-ephys-pcie
+   Image: https://xkcd.com/285/<br>
+   (1) https://github.com/jonnew/open-ephys-pcie
 ]
 
 ]
 
+---
+layout: false
+.left-column[
+  ## Citation Needed
+  ### Referencing this work
+  ### People
+]
+.right-column[
+
+
+.pull-left[
+Jon Newman
+<br><br><br><br><br><br><br><br>
+Jakob Voigts
+<br><br><br><br><br><br><br><br>
+Jack Zhang
+]
+
+.pull-right[
+<img class="right" src="./fig/jon.jpeg" width="60%"/>
+
+
+<img class="right" src="./fig/jakob.png" width="60%"/>
+
+
+<img class="right" src="./fig/jack.jpg" width="60%"/>
+]
+
+]
 ---
 template: inverse
 ##.lgray[Path to Open Ephys ++]
@@ -131,7 +169,7 @@ template: inverse
 layout: false
 .left-column[
   ## Multichannel Ephys
-  ### Distributed systems (A/D, etc) 
+  ### Distributed systems (A/D, etc)
 ]
 .right-column[
 
@@ -152,23 +190,23 @@ layout: false
 layout: false
 .left-column[
   ## Multichannel Ephys
-  ### Distributed systems (A/D, etc) 
+  ### Distributed systems (A/D, etc)
 ]
 .right-column[
 
 ### Issues
-- System has physically large and delecate analog domain
+- System has physically large and delicate analog domain
     - Noise easy to pick up
     - Bulky
     - Hard to repair
 - A/D conversion using specialized PCB-level systems
     - Bulky
-    - Requires sychronization across cards
+    - Requires synchronization across cards
     - Distributed Clocking etc
 - Computational power spread over many PCs
     - Bulky
     - Destroys real-time performance due to networking delays
-- Relies on commerical amplifiers, digitizers, etc
+- Relies on commercial amplifiers, digitizers, etc
     - Expensive
     - Deprecated
 ]
@@ -178,7 +216,7 @@ layout: false
 layout: false
 .left-column[
   ## Multichannel Ephys
-  ### Distributed systems (A/D, etc) 
+  ### Distributed systems (A/D, etc)
   ### Intan Chips
 ]
 .right-column[
@@ -196,9 +234,9 @@ layout: false
 layout: false
 .left-column[
   ## Multichannel Ephys
-  ### Distributed systems (A/D, etc) 
+  ### Distributed systems (A/D, etc)
   ### Intan Chips
-  ### Open Ephys 
+  ### Open Ephys
 ]
 .right-column[
 
@@ -209,7 +247,7 @@ layout: false
 - Three main components
     1. Intan chip (headstage)
     2. USB to Intan bridge (Opal Kelly board)
-    3. Host computer (Acqusition drivers and software)
+    3. Host computer (Acquisition drivers and software)
 
 ]
 
@@ -217,23 +255,27 @@ layout: false
 layout: false
 .left-column[
   ## Multichannel Ephys
-  ### Distributed systems (A/D, etc) 
+  ### Distributed systems (A/D, etc)
   ### Intan Chips
-  ### Open Ephys 
+  ### Open Ephys
 ]
 .right-column[
 
 ### Open Ephys 1.0: Improvements
 
-.pull-right[
+.pull-right-small[
 <img class="right" src="./fig/oe-summary.jpg" width="100%"/>
 ]
 
-.pull-left[
+.pull-left-big[
 1. Much smaller analog domain
+
 2. Higher resolution A/D conversion in 0.01 - 10 kHz domain
-3. Simplified connectorization to acqusition PC
-4. Software ease of use and exapandability
+
+3. Simplified connectorization to acquisition PC
+
+4. Software ease of use and expandability
+
 5. Tiny cost (2000 USD or so)
 ]
 
@@ -243,23 +285,25 @@ layout: false
 layout: false
 .left-column[
   ## Multichannel Ephys
-  ### Distributed systems (A/D, etc) 
+  ### Distributed systems (A/D, etc)
   ### Intan Chips
-  ### Open Ephys 
+  ### Open Ephys
 ]
 .right-column[
 
 ### Open Ephys 1.0: Regressions
 
-.pull-right[
+.pull-right-small[
 <img class="right" src="./fig/oe-summary.jpg" width="100%"/>
 ]
 
-.pull-left[
-1. Single Non selectable analog reference
+.pull-left-big[
+1. Single, non-selectable analog reference
     - Digital reference selection increases noise
-2. Intan amplifiers are 
-    - Nonlinear for high amplitude signals 
+    - (this is probably made up for by small analog domain)
+
+2. Intan amplifiers are
+    - Nonlinear for high amplitude signals
     - Considerable phase and amplitude distortion at low frequencies
 ]
 ]
@@ -268,32 +312,37 @@ layout: false
 layout: false
 .left-column[
   ## Multichannel Ephys
-  ### Distributed systems (A/D, etc) 
+  ### Distributed systems (A/D, etc)
   ### Intan Chips
-  ### Open Ephys 
+  ### Open Ephys
 ]
 .right-column[
 
 ### Open Ephys 1.0: Design Limitations
-
-1. All logic is still localized at host computer
-    - Headstage is "dumb"
-2. Connectorization is reduced, but scales linearly with the number
-  of devices on headstage
-    - e.g. 8 extra wires/Intan chip
-    - Commutation still relies on specilized devices
-3. Hardware is not scalable, modular, or easily standardized
-4. Although advertised for its closed-loop capabilites, the hardware has
-  remarkable _bad_ closed loop performance (vs. MEABench)
+.pull-right-small[
+<img class="right" src="./fig/oe-summary.jpg" width="100%"/>
 ]
+.pull-left-big[
+1. All logic is at host computer
+    - Headstage is "dumb"
 
+2. Connectorization reduced, but scales linearly with channel count
+    - e.g. 8 extra wires/Intan chip
+    - Commutation still relies on specialized devices
+
+3. Hardware designs not scalable, modular, or standard
+
+4. Although advertised for its closed-loop capabilities, hardware has
+  remarkable _bad_ closed loop performance
+]
+]
 ---
 layout: false
 .left-column[
   ## Multichannel Ephys
-  ### Distributed systems (A/D, etc) 
+  ### Distributed systems (A/D, etc)
   ### Intan Chips
-  ### Open Ephys 
+  ### Open Ephys
 ]
 .right-column[
 
@@ -325,11 +374,15 @@ layout: false
 ### Goals of OpenEphys++
 1.  Scalable and modular design that allows increases in channel count and
     addition of future sensors with no increase in connectorization
+
 2.  Reduce and stabilize closed-loop latency
+
 3.  Commodity hardware and standard interfaces wherever possible
-4.  Modular firmware that can be extended 
+
+4.  Modular firmware that can be extended
+
 5.  Low-level API
-    - Agnostic to language, OS, etc and 
+    - Agnostic to language, OS, etc and
     - Built to make high-level language bindings
     - Can be easily integrated into _existing_ acquisition software
 ]
@@ -341,19 +394,14 @@ layout: false
 ]
 .right-column[
 
-### Scalibility
+### Latency
 - PCIe bus
-- On-headstage FPGA
-- Data framing
-- Frame serialization
-- Coaxial transmission.red[<sup>1</sup>]
+    - Negligible latency
+    - Extremely high bandwidth
 
-<img class="right" src="./fig/ulca-miniscope.jpg" width="40%"/>
+<img class="right" src="./fig/round-trip-time.png" width="100%"/>
 ]
 
-.footnote[
-  .red[1] miniscope.org; Nature volume 534, pages 115–118 
-]
 
 ---
 layout: false
@@ -362,14 +410,22 @@ layout: false
 ]
 .right-column[
 
-### Latency
+### Scalability
 - PCIe bus
-- Up to 63 GB/second
-- Negligable latency
+    - Up to 63 GB/second
+- On-headstage FPGA
+    - Buffering async sources
+    - Data framing
+    - Frame serialization
+- Coaxial transmission.red[<sup>1</sup>]
+    - 1.2 Gbps forward channel ~ 2500 channels at 30 kHz
+    - 400 kbps back channel
 
-<img class="right" src="./fig/round-trip-time.png" width="100%"/>
+<img class="right" src="./fig/ulca-miniscope.jpg" width="30%"/>
 ]
 
+.footnote[
+  .red[1] miniscope.org; Nature volume 534, pages 115–118
 ]
 
 ---
@@ -380,12 +436,14 @@ layout: false
 .right-column[
 
 ### Modularity
-- Modular firmware allows mixing arbitrary remote sensors with different
-sampling rates
-- Data is serialized into frames which are transmitted over PCIe buse and
-decoded by host API 
+- FPGA provides extremely generic IO
+- Controlling any sensor or actuator
+    - Think Arduino ecosystem, VR device, and IOT on animal's head
+- Modular firmware allows mixing arbitrary sensors and actuators
+    - Can be asynchronous
+    - Does not even have to be periodic
 
-<img class="right" src="./fig/firmware.png" width="100%"/>
+<img class="right" src="./fig/firmware.png" width="90%"/>
 ]
 
 ---
@@ -395,12 +453,15 @@ layout: false
 ]
 .right-column[
 
-### `liboepcie`: Low-level API 
-- ANSI C, no dependencies other than C standar library
+### `liboepcie`: Low-level API
+- ANSI C, no dependencies other than C standard library
 - UNIX inspired
     - Simple
     - Consistent
-    - Interoperable
+    - Inter-operable
+- Used for high-level library bindings
+    - C++
+    - C#/.NET
 ]
 
 ---
@@ -410,7 +471,7 @@ layout: false
 ]
 .right-column[
 
-### `liboepcie` 
+### `liboepcie`
 ```c
 // Context
 typedef struct oe_ctx_impl *oe_ctx;
@@ -438,6 +499,7 @@ const char *oe_device_str(int dev_id);
 ```
 ]
 
+
 ---
 template: inverse
 ##.lgray[Migrating to Open Ephys ++]
@@ -446,22 +508,26 @@ template: inverse
 layout: false
 .left-column[
   ## Migrating to Open Ephys++
-  ### Stuff you need
 ]
 .right-column[
 
-1. Headstage
+### Stuff you will need
+
+1. Headstage & EIB*
 2. Coaxial cable
 3. Commutator (optional)
-4. Host board*
-5. FMC cable*
-6. KC705*
-7. Acqusition Software
+4. Host board**
+5. FMC cable**
+6. KC705**
+7. Acquisition Software
 8. Plating board (optional; lab shared)
 9. Test board (optional, but not really)
 
+<img class="right" src="./fig/oepcie_high-level-diagram.png" width="100%"/>
+
 .footnote[
-  Will likely be combined in future
+  \* Choice depends on animal size<br>
+  \*\* Will likely be combined in future
 ]
 ]
 
@@ -469,32 +535,354 @@ layout: false
 layout: false
 .left-column[
   ## Migrating to Open Ephys++
-  ### Stuff you need
+  1. Headstage & EIB
 ]
 .right-column[
-### Headstages
 
-1. Rat rev 1.0 
-    - Tested
-    - 2 PCBs
-    - Ephys only to 128 channels
-2. Mouse rev 1.0
-    - In testing, done in 1 month
-    - Single PCB
-        - 64 channels
-        - Steam VR tracking, optogenetics, electrical stimulation, 9 DOF IMU
-3. Rat rev 2.0
-    - WIP
-    - Single PCB
-    - 128 or 256 channels
-    - Steam VR tracking, optogenetics, electrical stimulation, wireless
-    operationation, expanssion headers
+### Option 1: headstage-128 rev 1.0 with eib-128
+- For rats
+- Tested
+- 3 PCB stack: EIB, headstage, serializer
+<br>
+<br>
+- 128 Channels of ephys
+- 2 channels optogenetics
+
+.pull-left[
+<img class="right" src="./fig/eib-128.jpg" width="100%"/>
 ]
+
+.pull-right[
+<img class="right" src="./fig/serializer.jpg" width="100%"/>
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Migrating to Open Ephys++
+  1. Headstage & EIB
+]
+.right-column[
+
+### Option 2: headstage-64 with eib-64
+.pull-left-small[
+- In testing
+- ETA: 1 month
+- 2 PCB stack: EIB, headstage
+<br>
+<br>
+- 64 channels
+- Steam VR tracking
+- 9 DOF IMU
+- Optogenetics
+- Estim
+]
+.pull-right-big[
+<img class="right" src="./fig/mouse-overview.png" width="100%"/>
+]
+
+]
+---
+layout: false
+.left-column[
+  ## Migrating to Open Ephys++
+  1. Headstage & EIB
+]
+.right-column[
+
+### Option 3: headstage-128-256 with eib-128 or eib-256
+- WIP
+- 2 PCB stack: EIB, headstage
+<br>
+<br>
+- 128 or 256 channels
+- 9 DOF IMU
+- Steam VR tracking
+- 9 DOF IMU
+- Optogenetics
+- Estim
+- Wireless operation
+- Expansion headers
+
+.pull-left[
+<img class="right" src="./fig/eib-256.jpg" width="100%"/>
+]
+
+.pull-right[
+<img class="right" src="./fig/headstage-256.jpg" width="100%"/>
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Migrating to Open Ephys++
+  1. Headstage & EIB
+  2. Coax
+]
+.right-column[
+
+### Coax General Info
+- Serialized data sits on __~1GHz__ carrier signal
+- 50 Ohms characteristic impedance
+- Smaller attenuation over distance allows longer cables
+
+
+<img class="right" src="./fig/temp-flex.jpg" width="100%"/>
+]
+
+---
+layout: false
+.left-column[
+  ## Migrating to Open Ephys++
+  1. Headstage & EIB
+  2. Coax
+]
+.right-column[
+
+### Coax Option: Axon Cable PCXxxK10K
+- Jakob has high hopes, Jon has very low hopes
+- About the same size as a _single fine wire_
+- We will test soon
+
+
+<img class="right" src="./fig/picocoax.png" width="40%"/>
+]
+
+---
+layout: false
+.left-column[
+  ## Migrating to Open Ephys++
+  1. Headstage & EIB
+  2. Coax
+]
+.right-column[
+
+### Coax Option: Conner CW 2040-3650
+- Used by UCLA miniscope
+- Works for 1-2 meters
+- 1 mm thick or so
+- Very flexible, pretty thick
+- Attenuation not specified and seems to suck
+
+
+<img class="right" src="./fig/ulca-miniscope.jpg" width="50%"/>
+
+]
+
+---
+layout: false
+.left-column[
+  ## Migrating to Open Ephys++
+  1. Headstage & EIB
+  2. Coax
+]
+.right-column[
+
+### Coax Option: Molex Temp-Flex 047SC-2901
+- Used by me
+- 1.4 mm thick
+- Somewhat rigid, but this _helps_ the commutator
+- Extremely good performance for its size: 35 dB / 100 ft
+
+
+<img class="right" src="./fig/temp-flex.jpg" width="100%"/>
+]
+
+---
+layout: false
+.left-column[
+  ## Migrating to Open Ephys++
+  1. Headstage & EIB
+  2. Coax
+  3. Commutator
+]
+.right-column[
+
+### Commutator Selection
+- Passive "rotary joints" are pretty common
+    - They are the right size for rats and too heavy for mice
+
+.pull-left[
+Pasternack PE1401
+<img class="right" src="./fig/PE1401.jpg" width="100%"/>
+]
+.pull-right[
+Pasternack PE1400
+<img class="right" src="./fig/pe1400.jpg" width="100%"/>
+]
+
+- Other commutator's can likely be used
+    - Especially if they are placed close to the animal or close to the
+    deserializer
+    - Try not to put in the middle of the coax
+]
+
+---
+layout: false
+.left-column[
+  ## Migrating to Open Ephys++
+  1. Headstage & EIB
+  2. Coax
+  3. Commutator
+  4. Host board
+]
+.right-column[
+
+### Host Board General Info
+- Contains deserializer
+- Galvanically isolated to reduce noise
+- Connects to KC705 using FMC cable
+- Need 1 per headstage
+
+<img class="right" src="./fig/host-board.jpg" width="80%"/>
+
+]
+
+---
+layout: false
+.left-column[
+  ## Migrating to Open Ephys++
+  1. Headstage & EIB
+  2. Coax
+  3. Commutator
+  4. Host board
+  5. FMC Cable
+]
+.right-column[
+
+### FMC Cable General Info
+- Direct from Samtec: HDR-169473-01, 140 USD
+- Transmits deserialzed data to KC705 FPGA
+
+<img class="right" src="./fig/HDR-169473-01.jpg" width="100%"/>
+
+]
+
+---
+layout: false
+.left-column[
+  ## Migrating to Open Ephys++
+  1. Headstage & EIB
+  2. Coax
+  3. Commutator
+  4. Host board
+  5. FMC Cable
+  6. KC705
+]
+.right-column[
+
+### KC705 General Info
+- FPGA host board
+- Need 1 per headstage
+- Evaluation board from Xilinx
+- Comes with PCIe IP that works out the box will our system
+- Available direct from Xilix: 1700 USD
+- Available on Digikey: 122-1831-ND, 1900 USD
+
+<img class="right" src="./fig/kc705.jpg" width="100%"/>
+
+]
+
+---
+layout: false
+.left-column[
+  ## Migrating to Open Ephys++
+  1. Headstage & EIB
+  2. Coax
+  3. Commutator
+  4. Host board
+  5. FMC Cable
+  6. KC705
+  7. Acquisition software
+]
+.right-column[
+
+### Acquisition Software
+- Highly recommend Linux
+    - Drivers are included with Linux Kernel (don't need to install)
+
+- `liboepcie` bindings
+    - C++: Used in OE GUI
+    - C#: Used in Bonsai (TODO)
+    - Whatever you want to write a binding for...
+
+.pull-right[
+<img class="right" src="./fig/oe-gui.jpeg" width="100%"/>
+]
+
+.pull-left[
+<img class="right" src="./fig/bonsai.png" width="100%"/>
+]
+]
+
+---
+layout: false
+.left-column[
+  ## Migrating to Open Ephys++
+  1. Headstage & EIB
+  2. Coax
+  3. Commutator
+  4. Host board
+  5. FMC Cable
+  6. KC705
+  7. Acquisition software
+]
+.right-column[
+
+### Open Ephys GUI
+- Poorly designed piece of software
+- Interface is very good for the type of Ephys we do
+- Stable once a processing chain is running. 
+- Plugin for `liboepcie`
+    - Functions
+    - Minimal
+    - I had programming for OE GUI so I only add things when I need them 
+
+<img class="right" src="./fig/oe-gui.jpeg" width="100%"/>
+
+]
+
+---
+layout: false
+.left-column[
+  ## Migrating to Open Ephys++
+  1. Headstage & EIB
+  2. Coax
+  3. Commutator
+  4. Host board
+  5. FMC Cable
+  6. KC705
+  7. Acquisition software
+]
+.right-column[
+
+### Bonsai
+- Extremely well designed software
+- Relies on .NET runtime which pretty much confines it to Windows
+- Can be thought of as a visual wrapper for Reactive Extensions
+    - Comes from functional programming world
+    - Propagates change
+- Very nice plugin interface
+- Deals with asynchronous data streams _by nature_: 
+    - e.g. different sample rates are fine from its core
+- Plugin for `liboepcie`
+    - WIP
+
+<img class="right" src="./fig/bonsai.png" width="50%"/>
+
+]
+
+---
+template: inverse
+##.lgray[Q & A Session]
+
     </textarea>
     <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
-    <script> 
-        var hljs = remark.highlighter.engine; 
+    <script>
+        var hljs = remark.highlighter.engine;
     </script>
     <script type="text/javascript">
         var slideshow = remark.create( {
